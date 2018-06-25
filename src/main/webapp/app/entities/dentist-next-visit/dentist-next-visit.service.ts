@@ -64,7 +64,7 @@ export class DentistNextVisitService {
     private convertItemFromServer(dentistNextVisit: DentistNextVisit): DentistNextVisit {
         const copy: DentistNextVisit = Object.assign({}, dentistNextVisit);
         copy.measurmentdate = this.dateUtils
-            .convertLocalDateFromServer(dentistNextVisit.measurmentdate);
+            .convertDateTimeFromServer(dentistNextVisit.measurmentdate);
         return copy;
     }
 
@@ -73,8 +73,6 @@ export class DentistNextVisitService {
      */
     private convert(dentistNextVisit: DentistNextVisit): DentistNextVisit {
         const copy: DentistNextVisit = Object.assign({}, dentistNextVisit);
-        copy.measurmentdate = this.dateUtils
-            .convertLocalDateToServer(dentistNextVisit.measurmentdate);
         return copy;
     }
 }

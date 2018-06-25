@@ -64,7 +64,7 @@ export class VsRespiratoryRateService {
     private convertItemFromServer(vsRespiratoryRate: VsRespiratoryRate): VsRespiratoryRate {
         const copy: VsRespiratoryRate = Object.assign({}, vsRespiratoryRate);
         copy.measurmentdate = this.dateUtils
-            .convertLocalDateFromServer(vsRespiratoryRate.measurmentdate);
+            .convertDateTimeFromServer(vsRespiratoryRate.measurmentdate);
         return copy;
     }
 
@@ -73,8 +73,6 @@ export class VsRespiratoryRateService {
      */
     private convert(vsRespiratoryRate: VsRespiratoryRate): VsRespiratoryRate {
         const copy: VsRespiratoryRate = Object.assign({}, vsRespiratoryRate);
-        copy.measurmentdate = this.dateUtils
-            .convertLocalDateToServer(vsRespiratoryRate.measurmentdate);
         return copy;
     }
 }

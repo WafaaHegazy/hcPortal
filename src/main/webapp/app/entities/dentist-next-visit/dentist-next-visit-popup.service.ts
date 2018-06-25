@@ -4,12 +4,14 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
 import { DentistNextVisit } from './dentist-next-visit.model';
 import { DentistNextVisitService } from './dentist-next-visit.service';
+import {DatePipe} from "@angular/common";
 
 @Injectable()
 export class DentistNextVisitPopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
+        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private dentistNextVisitService: DentistNextVisitService
@@ -29,13 +31,8 @@ export class DentistNextVisitPopupService {
                 this.dentistNextVisitService.find(id)
                     .subscribe((dentistNextVisitResponse: HttpResponse<DentistNextVisit>) => {
                         const dentistNextVisit: DentistNextVisit = dentistNextVisitResponse.body;
-                        if (dentistNextVisit.measurmentdate) {
-                            dentistNextVisit.measurmentdate = {
-                                year: dentistNextVisit.measurmentdate.getFullYear(),
-                                month: dentistNextVisit.measurmentdate.getMonth() + 1,
-                                day: dentistNextVisit.measurmentdate.getDate()
-                            };
-                        }
+                        dentistNextVisit.measurmentdate = this.datePipe
+                            .transform(dentistNextVisit.measurmentdate, 'yyyy-MM-ddTHH:mm:ss');
                         this.ngbModalRef = this.dentistNextVisitModalRef(component, dentistNextVisit);
                         resolve(this.ngbModalRef);
                     });

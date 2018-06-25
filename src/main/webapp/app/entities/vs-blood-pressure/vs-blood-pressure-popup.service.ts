@@ -4,12 +4,14 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
 import { VsBloodPressure } from './vs-blood-pressure.model';
 import { VsBloodPressureService } from './vs-blood-pressure.service';
+import {DatePipe} from "@angular/common";
 
 @Injectable()
 export class VsBloodPressurePopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
+        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private vsBloodPressureService: VsBloodPressureService
@@ -29,13 +31,8 @@ export class VsBloodPressurePopupService {
                 this.vsBloodPressureService.find(id)
                     .subscribe((vsBloodPressureResponse: HttpResponse<VsBloodPressure>) => {
                         const vsBloodPressure: VsBloodPressure = vsBloodPressureResponse.body;
-                        if (vsBloodPressure.measurmentdate) {
-                            vsBloodPressure.measurmentdate = {
-                                year: vsBloodPressure.measurmentdate.getFullYear(),
-                                month: vsBloodPressure.measurmentdate.getMonth() + 1,
-                                day: vsBloodPressure.measurmentdate.getDate()
-                            };
-                        }
+                        vsBloodPressure.measurmentdate = this.datePipe
+                            .transform(vsBloodPressure.measurmentdate, 'yyyy-MM-ddTHH:mm:ss');
                         this.ngbModalRef = this.vsBloodPressureModalRef(component, vsBloodPressure);
                         resolve(this.ngbModalRef);
                     });

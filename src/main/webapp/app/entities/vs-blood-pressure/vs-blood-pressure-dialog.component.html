@@ -44,17 +44,15 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcPortalApp.vsBloodPressure.measurmentdate" for="field_measurmentdate">Measurmentdate</label>
-            <div class="input-group">
-                <input id="field_measurmentdate" type="text" class="form-control" name="measurmentdate" ngbDatepicker  #measurmentdateDp="ngbDatepicker" [(ngModel)]="vsBloodPressure.measurmentdate"
-                required/>
-                <span class="input-group-append">
-                    <button type="button" class="btn btn-secondary" (click)="measurmentdateDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
+            <div class="d-flex">
+                <input id="field_measurmentdate" type="datetime-local" class="form-control" name="measurmentdate" [(ngModel)]="vsBloodPressure.measurmentdate"
+                       required/>
+
             </div>
             <div [hidden]="!(editForm.controls.measurmentdate?.dirty && editForm.controls.measurmentdate?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.measurmentdate?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
+                       [hidden]="!editForm.controls.measurmentdate?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
                 </small>
             </div>
         </div>

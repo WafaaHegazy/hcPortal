@@ -4,12 +4,14 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
 import { VsRespiratoryRate } from './vs-respiratory-rate.model';
 import { VsRespiratoryRateService } from './vs-respiratory-rate.service';
+import {DatePipe} from "@angular/common";
 
 @Injectable()
 export class VsRespiratoryRatePopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
+        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private vsRespiratoryRateService: VsRespiratoryRateService
@@ -29,13 +31,8 @@ export class VsRespiratoryRatePopupService {
                 this.vsRespiratoryRateService.find(id)
                     .subscribe((vsRespiratoryRateResponse: HttpResponse<VsRespiratoryRate>) => {
                         const vsRespiratoryRate: VsRespiratoryRate = vsRespiratoryRateResponse.body;
-                        if (vsRespiratoryRate.measurmentdate) {
-                            vsRespiratoryRate.measurmentdate = {
-                                year: vsRespiratoryRate.measurmentdate.getFullYear(),
-                                month: vsRespiratoryRate.measurmentdate.getMonth() + 1,
-                                day: vsRespiratoryRate.measurmentdate.getDate()
-                            };
-                        }
+                        vsRespiratoryRate.measurmentdate = this.datePipe
+                            .transform(vsRespiratoryRate.measurmentdate, 'yyyy-MM-ddTHH:mm:ss');
                         this.ngbModalRef = this.vsRespiratoryRateModalRef(component, vsRespiratoryRate);
                         resolve(this.ngbModalRef);
                     });

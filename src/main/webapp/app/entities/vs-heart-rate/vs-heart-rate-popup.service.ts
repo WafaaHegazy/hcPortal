@@ -4,12 +4,14 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
 import { VsHeartRate } from './vs-heart-rate.model';
 import { VsHeartRateService } from './vs-heart-rate.service';
+import {DatePipe} from "@angular/common";
 
 @Injectable()
 export class VsHeartRatePopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
+        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private vsHeartRateService: VsHeartRateService
@@ -29,13 +31,8 @@ export class VsHeartRatePopupService {
                 this.vsHeartRateService.find(id)
                     .subscribe((vsHeartRateResponse: HttpResponse<VsHeartRate>) => {
                         const vsHeartRate: VsHeartRate = vsHeartRateResponse.body;
-                        if (vsHeartRate.measurmentdate) {
-                            vsHeartRate.measurmentdate = {
-                                year: vsHeartRate.measurmentdate.getFullYear(),
-                                month: vsHeartRate.measurmentdate.getMonth() + 1,
-                                day: vsHeartRate.measurmentdate.getDate()
-                            };
-                        }
+                        vsHeartRate.measurmentdate = this.datePipe
+                            .transform(vsHeartRate.measurmentdate, 'yyyy-MM-ddTHH:mm:ss');
                         this.ngbModalRef = this.vsHeartRateModalRef(component, vsHeartRate);
                         resolve(this.ngbModalRef);
                     });

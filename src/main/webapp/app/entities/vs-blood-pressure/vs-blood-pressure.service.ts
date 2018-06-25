@@ -64,7 +64,7 @@ export class VsBloodPressureService {
     private convertItemFromServer(vsBloodPressure: VsBloodPressure): VsBloodPressure {
         const copy: VsBloodPressure = Object.assign({}, vsBloodPressure);
         copy.measurmentdate = this.dateUtils
-            .convertLocalDateFromServer(vsBloodPressure.measurmentdate);
+            .convertDateTimeFromServer(vsBloodPressure.measurmentdate);
         return copy;
     }
 
@@ -73,8 +73,6 @@ export class VsBloodPressureService {
      */
     private convert(vsBloodPressure: VsBloodPressure): VsBloodPressure {
         const copy: VsBloodPressure = Object.assign({}, vsBloodPressure);
-        copy.measurmentdate = this.dateUtils
-            .convertLocalDateToServer(vsBloodPressure.measurmentdate);
         return copy;
     }
 }

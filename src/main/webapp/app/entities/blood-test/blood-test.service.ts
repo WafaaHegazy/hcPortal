@@ -64,7 +64,7 @@ export class BloodTestService {
     private convertItemFromServer(bloodTest: BloodTest): BloodTest {
         const copy: BloodTest = Object.assign({}, bloodTest);
         copy.measurmentdate = this.dateUtils
-            .convertLocalDateFromServer(bloodTest.measurmentdate);
+            .convertDateTimeFromServer(bloodTest.measurmentdate);
         return copy;
     }
 
@@ -73,8 +73,6 @@ export class BloodTestService {
      */
     private convert(bloodTest: BloodTest): BloodTest {
         const copy: BloodTest = Object.assign({}, bloodTest);
-        copy.measurmentdate = this.dateUtils
-            .convertLocalDateToServer(bloodTest.measurmentdate);
         return copy;
     }
 }

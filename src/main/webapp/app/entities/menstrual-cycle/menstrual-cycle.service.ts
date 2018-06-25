@@ -64,9 +64,9 @@ export class MenstrualCycleService {
     private convertItemFromServer(menstrualCycle: MenstrualCycle): MenstrualCycle {
         const copy: MenstrualCycle = Object.assign({}, menstrualCycle);
         copy.startDate = this.dateUtils
-            .convertLocalDateFromServer(menstrualCycle.startDate);
+            .convertDateTimeFromServer(menstrualCycle.startDate);
         copy.endDate = this.dateUtils
-            .convertLocalDateFromServer(menstrualCycle.endDate);
+            .convertDateTimeFromServer(menstrualCycle.endDate);
         return copy;
     }
 
@@ -75,10 +75,6 @@ export class MenstrualCycleService {
      */
     private convert(menstrualCycle: MenstrualCycle): MenstrualCycle {
         const copy: MenstrualCycle = Object.assign({}, menstrualCycle);
-        copy.startDate = this.dateUtils
-            .convertLocalDateToServer(menstrualCycle.startDate);
-        copy.endDate = this.dateUtils
-            .convertLocalDateToServer(menstrualCycle.endDate);
         return copy;
     }
 }

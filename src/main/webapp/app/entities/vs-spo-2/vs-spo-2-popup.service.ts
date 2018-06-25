@@ -4,12 +4,14 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
 import { VsSpo2 } from './vs-spo-2.model';
 import { VsSpo2Service } from './vs-spo-2.service';
+import {DatePipe} from "@angular/common";
 
 @Injectable()
 export class VsSpo2PopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
+        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private vsSpo2Service: VsSpo2Service
@@ -29,13 +31,8 @@ export class VsSpo2PopupService {
                 this.vsSpo2Service.find(id)
                     .subscribe((vsSpo2Response: HttpResponse<VsSpo2>) => {
                         const vsSpo2: VsSpo2 = vsSpo2Response.body;
-                        if (vsSpo2.measurmentdate) {
-                            vsSpo2.measurmentdate = {
-                                year: vsSpo2.measurmentdate.getFullYear(),
-                                month: vsSpo2.measurmentdate.getMonth() + 1,
-                                day: vsSpo2.measurmentdate.getDate()
-                            };
-                        }
+                        vsSpo2.measurmentdate = this.datePipe
+                            .transform(vsSpo2.measurmentdate, 'yyyy-MM-ddTHH:mm:ss');
                         this.ngbModalRef = this.vsSpo2ModalRef(component, vsSpo2);
                         resolve(this.ngbModalRef);
                     });

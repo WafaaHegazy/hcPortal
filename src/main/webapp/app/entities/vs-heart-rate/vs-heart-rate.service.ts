@@ -65,7 +65,7 @@ export class VsHeartRateService {
     private convertItemFromServer(vsHeartRate: VsHeartRate): VsHeartRate {
         const copy: VsHeartRate = Object.assign({}, vsHeartRate);
         copy.measurmentdate = this.dateUtils
-            .convertLocalDateFromServer(vsHeartRate.measurmentdate);
+            .convertDateTimeFromServer(vsHeartRate.measurmentdate);
         return copy;
     }
 
@@ -74,8 +74,6 @@ export class VsHeartRateService {
      */
     private convert(vsHeartRate: VsHeartRate): VsHeartRate {
         const copy: VsHeartRate = Object.assign({}, vsHeartRate);
-        copy.measurmentdate = this.dateUtils
-            .convertLocalDateToServer(vsHeartRate.measurmentdate);
         return copy;
     }
 }

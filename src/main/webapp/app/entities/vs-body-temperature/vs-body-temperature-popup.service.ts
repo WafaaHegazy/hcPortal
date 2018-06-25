@@ -4,12 +4,14 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
 import { VsBodyTemperature } from './vs-body-temperature.model';
 import { VsBodyTemperatureService } from './vs-body-temperature.service';
+import {DatePipe} from "@angular/common";
 
 @Injectable()
 export class VsBodyTemperaturePopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
+        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private vsBodyTemperatureService: VsBodyTemperatureService
@@ -29,13 +31,8 @@ export class VsBodyTemperaturePopupService {
                 this.vsBodyTemperatureService.find(id)
                     .subscribe((vsBodyTemperatureResponse: HttpResponse<VsBodyTemperature>) => {
                         const vsBodyTemperature: VsBodyTemperature = vsBodyTemperatureResponse.body;
-                        if (vsBodyTemperature.measurmentdate) {
-                            vsBodyTemperature.measurmentdate = {
-                                year: vsBodyTemperature.measurmentdate.getFullYear(),
-                                month: vsBodyTemperature.measurmentdate.getMonth() + 1,
-                                day: vsBodyTemperature.measurmentdate.getDate()
-                            };
-                        }
+                        vsBodyTemperature.measurmentdate = this.datePipe
+                            .transform(vsBodyTemperature.measurmentdate, 'yyyy-MM-ddTHH:mm:ss');
                         this.ngbModalRef = this.vsBodyTemperatureModalRef(component, vsBodyTemperature);
                         resolve(this.ngbModalRef);
                     });

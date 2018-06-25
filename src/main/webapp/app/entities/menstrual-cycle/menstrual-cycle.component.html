@@ -25,8 +25,8 @@
             <tbody>
             <tr *ngFor="let menstrualCycle of menstrualCycles ;trackBy: trackId">
                 <td>{{menstrualCycle.userid}}</td>
-                <td>{{menstrualCycle.startDate | date:'mediumDate'}}</td>
-                <td>{{menstrualCycle.endDate | date:'mediumDate'}}</td>
+                <td>{{menstrualCycle.startDate | date:'medium'}}</td>
+                <td>{{menstrualCycle.endDate | date:'medium'}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

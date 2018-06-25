@@ -4,12 +4,14 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
 import { MenstrualCycle } from './menstrual-cycle.model';
 import { MenstrualCycleService } from './menstrual-cycle.service';
+import {DatePipe} from "@angular/common";
 
 @Injectable()
 export class MenstrualCyclePopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
+        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private menstrualCycleService: MenstrualCycleService
@@ -29,20 +31,10 @@ export class MenstrualCyclePopupService {
                 this.menstrualCycleService.find(id)
                     .subscribe((menstrualCycleResponse: HttpResponse<MenstrualCycle>) => {
                         const menstrualCycle: MenstrualCycle = menstrualCycleResponse.body;
-                        if (menstrualCycle.startDate) {
-                            menstrualCycle.startDate = {
-                                year: menstrualCycle.startDate.getFullYear(),
-                                month: menstrualCycle.startDate.getMonth() + 1,
-                                day: menstrualCycle.startDate.getDate()
-                            };
-                        }
-                        if (menstrualCycle.endDate) {
-                            menstrualCycle.endDate = {
-                                year: menstrualCycle.endDate.getFullYear(),
-                                month: menstrualCycle.endDate.getMonth() + 1,
-                                day: menstrualCycle.endDate.getDate()
-                            };
-                        }
+                        menstrualCycle.startDate = this.datePipe
+                            .transform(menstrualCycle.startDate, 'yyyy-MM-ddTHH:mm:ss');
+                        menstrualCycle.endDate = this.datePipe
+                            .transform(menstrualCycle.endDate, 'yyyy-MM-ddTHH:mm:ss');
                         this.ngbModalRef = this.menstrualCycleModalRef(component, menstrualCycle);
                         resolve(this.ngbModalRef);
                     });

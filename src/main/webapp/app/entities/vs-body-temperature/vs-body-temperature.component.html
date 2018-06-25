@@ -26,7 +26,7 @@
             <tr *ngFor="let vsBodyTemperature of vsBodyTemperatures ;trackBy: trackId">
                 <td>{{vsBodyTemperature.userid}}</td>
                 <td>{{vsBodyTemperature.celsius}}</td>
-                <td>{{vsBodyTemperature.measurmentdate | date:'mediumDate'}}</td>
+                <td>{{vsBodyTemperature.measurmentdate | date:'medium'}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

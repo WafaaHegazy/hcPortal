@@ -68,13 +68,11 @@
                 [(ngModel)]="dentistVisit.notes" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="hcPortalApp.dentistNextVisit.measurmentdate" for="field_measurmentdate">Measurmentdate</label>
-            <div class="input-group">
-                <input id="field_measurmentdate" type="text" class="form-control" name="measurmentdate" ngbDatepicker  #measurmentdateDp="ngbDatepicker" [(ngModel)]="dentistVisit.measurmentdate"
+            <label class="form-control-label" jhiTranslate="hcPortalApp.dentistVisit.measurmentdate" for="field_measurmentdate">Measurmentdate</label>
+            <div class="d-flex">
+                <input id="field_measurmentdate" type="datetime-local" class="form-control" name="measurmentdate" [(ngModel)]="dentistVisit.measurmentdate"
                        required/>
-                <span class="input-group-append">
-                    <button type="button" class="btn btn-secondary" (click)="measurmentdateDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
+
             </div>
             <div [hidden]="!(editForm.controls.measurmentdate?.dirty && editForm.controls.measurmentdate?.invalid)">
                 <small class="form-text text-danger"

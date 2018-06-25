@@ -4,12 +4,14 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
 import { BloodTest } from './blood-test.model';
 import { BloodTestService } from './blood-test.service';
+import {DatePipe} from "@angular/common";
 
 @Injectable()
 export class BloodTestPopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
+        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private bloodTestService: BloodTestService
@@ -29,13 +31,8 @@ export class BloodTestPopupService {
                 this.bloodTestService.find(id)
                     .subscribe((bloodTestResponse: HttpResponse<BloodTest>) => {
                         const bloodTest: BloodTest = bloodTestResponse.body;
-                        if (bloodTest.measurmentdate) {
-                            bloodTest.measurmentdate = {
-                                year: bloodTest.measurmentdate.getFullYear(),
-                                month: bloodTest.measurmentdate.getMonth() + 1,
-                                day: bloodTest.measurmentdate.getDate()
-                            };
-                        }
+                        bloodTest.measurmentdate = this.datePipe
+                            .transform(bloodTest.measurmentdate, 'yyyy-MM-ddTHH:mm:ss');
                         this.ngbModalRef = this.bloodTestModalRef(component, bloodTest);
                         resolve(this.ngbModalRef);
                     });

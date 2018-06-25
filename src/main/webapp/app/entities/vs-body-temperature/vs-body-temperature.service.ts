@@ -64,7 +64,7 @@ export class VsBodyTemperatureService {
     private convertItemFromServer(vsBodyTemperature: VsBodyTemperature): VsBodyTemperature {
         const copy: VsBodyTemperature = Object.assign({}, vsBodyTemperature);
         copy.measurmentdate = this.dateUtils
-            .convertLocalDateFromServer(vsBodyTemperature.measurmentdate);
+            .convertDateTimeFromServer(vsBodyTemperature.measurmentdate);
         return copy;
     }
 
@@ -73,8 +73,6 @@ export class VsBodyTemperatureService {
      */
     private convert(vsBodyTemperature: VsBodyTemperature): VsBodyTemperature {
         const copy: VsBodyTemperature = Object.assign({}, vsBodyTemperature);
-        copy.measurmentdate = this.dateUtils
-            .convertLocalDateToServer(vsBodyTemperature.measurmentdate);
         return copy;
     }
 }

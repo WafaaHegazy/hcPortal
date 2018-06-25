@@ -64,7 +64,7 @@ export class VsSpo2Service {
     private convertItemFromServer(vsSpo2: VsSpo2): VsSpo2 {
         const copy: VsSpo2 = Object.assign({}, vsSpo2);
         copy.measurmentdate = this.dateUtils
-            .convertLocalDateFromServer(vsSpo2.measurmentdate);
+            .convertDateTimeFromServer(vsSpo2.measurmentdate);
         return copy;
     }
 
@@ -73,8 +73,6 @@ export class VsSpo2Service {
      */
     private convert(vsSpo2: VsSpo2): VsSpo2 {
         const copy: VsSpo2 = Object.assign({}, vsSpo2);
-        copy.measurmentdate = this.dateUtils
-            .convertLocalDateToServer(vsSpo2.measurmentdate);
         return copy;
     }
 }
