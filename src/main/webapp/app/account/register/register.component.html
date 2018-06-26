@@ -118,7 +118,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="global.form.birthdate" for="birthdate">birthdate</label>
                     <div class="input-group">
-                        <input id="birthdate" type="text" class="form-control" name="birthdate" ngbDatepicker
+                        <input id="birthdate" type="text" [minDate]="minDate" class="form-control" name="birthdate" ngbDatepicker
                                #birthdateDp="ngbDatepicker" [(ngModel)]="birthdate" #birthdateInput="ngModel"
                                required placeholder="{{'global.form.birthdate.placeholder' | translate}}"/>
                         <span class="input-group-append">

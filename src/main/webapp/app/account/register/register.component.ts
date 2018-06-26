@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, Renderer, ElementRef } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import {NgbDateStruct, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import { JhiLanguageService } from 'ng-jhipster';
 
 import { Register } from './register.service';
@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     birthdate: any;
     month: string;
     day: string;
+    minDate: NgbDateStruct;
 
     constructor(
         private languageService: JhiLanguageService,
@@ -31,6 +32,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         private elementRef: ElementRef,
         private renderer: Renderer
     ) {
+        this.minDate = {year: 1900, month: 1, day: 1};
     }
 
     ngOnInit() {
