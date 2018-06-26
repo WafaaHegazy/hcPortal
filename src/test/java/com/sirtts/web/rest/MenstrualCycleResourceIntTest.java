@@ -47,11 +47,11 @@ public class MenstrualCycleResourceIntTest {
     private static final String DEFAULT_USERID = "AAAAAAAAAA";
     private static final String UPDATED_USERID = "BBBBBBBBBB";
 
-    private static final LocalDateTime DEFAULT_START_DATE = LocalDateTime.now(ZoneOffset.UTC);
-    private static final LocalDateTime UPDATED_START_DATE = LocalDateTime.now(ZoneOffset.UTC);
+    private static final LocalDateTime DEFAULT_START_DATE = LocalDateTime.ofEpochSecond(1L,0,ZoneOffset.UTC);
+    private static final LocalDateTime UPDATED_START_DATE = LocalDateTime.ofEpochSecond(1L,0,ZoneOffset.UTC);
 
-    private static final LocalDateTime DEFAULT_END_DATE = LocalDateTime.now(ZoneOffset.UTC);
-    private static final LocalDateTime UPDATED_END_DATE = LocalDateTime.now(ZoneOffset.UTC);
+    private static final LocalDateTime DEFAULT_END_DATE = LocalDateTime.ofEpochSecond(1L,0,ZoneOffset.UTC);
+    private static final LocalDateTime UPDATED_END_DATE = LocalDateTime.ofEpochSecond(1L,0,ZoneOffset.UTC);
 
     @Autowired
     private MenstrualCycleRepository menstrualCycleRepository;

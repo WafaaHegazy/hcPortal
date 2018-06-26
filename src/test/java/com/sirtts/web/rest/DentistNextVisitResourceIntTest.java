@@ -47,8 +47,8 @@ public class DentistNextVisitResourceIntTest {
     private static final String DEFAULT_USERID = "AAAAAAAAAA";
     private static final String UPDATED_USERID = "BBBBBBBBBB";
 
-    private static final LocalDateTime DEFAULT_MEASURMENTDATE = LocalDateTime.now(ZoneOffset.UTC);
-    private static final LocalDateTime UPDATED_MEASURMENTDATE = LocalDateTime.now(ZoneOffset.UTC);
+    private static final LocalDateTime DEFAULT_MEASURMENTDATE = LocalDateTime.ofEpochSecond(1L,0,ZoneOffset.UTC);
+    private static final LocalDateTime UPDATED_MEASURMENTDATE = LocalDateTime.ofEpochSecond(1L,0,ZoneOffset.UTC);
 
     @Autowired
     private DentistNextVisitRepository dentistNextVisitRepository;

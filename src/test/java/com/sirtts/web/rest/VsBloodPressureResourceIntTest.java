@@ -53,8 +53,8 @@ public class VsBloodPressureResourceIntTest {
     private static final Double DEFAULT_DIASTOLIC = 1D;
     private static final Double UPDATED_DIASTOLIC = 2D;
 
-    private static final LocalDateTime DEFAULT_MEASURMENTDATE = LocalDateTime.now(ZoneOffset.UTC);
-    private static final LocalDateTime UPDATED_MEASURMENTDATE = LocalDateTime.now(ZoneOffset.UTC);
+    private static final LocalDateTime DEFAULT_MEASURMENTDATE = LocalDateTime.ofEpochSecond(1L,0,ZoneOffset.UTC);
+    private static final LocalDateTime UPDATED_MEASURMENTDATE = LocalDateTime.ofEpochSecond(1L,0,ZoneOffset.UTC);
 
     @Autowired
     private VsBloodPressureRepository vsBloodPressureRepository;

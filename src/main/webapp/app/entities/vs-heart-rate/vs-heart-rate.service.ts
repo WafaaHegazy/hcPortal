@@ -36,7 +36,6 @@ export class VsHeartRateService {
 
     query(req?: any): Observable<HttpResponse<VsHeartRate[]>> {
         const options = createRequestOption(req);
-        debugger;
         return this.http.get<VsHeartRate[]>(`${this.resourceUrl}/byUserid/`, { params: options, observe: 'response' })
             .map((res: HttpResponse<VsHeartRate[]>) => this.convertArrayResponse(res));
     }

@@ -4,7 +4,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
 import { MenstrualCycle } from './menstrual-cycle.model';
 import { MenstrualCycleService } from './menstrual-cycle.service';
-import {DatePipe} from "@angular/common";
+import {DatePipe} from '@angular/common';
 
 @Injectable()
 export class MenstrualCyclePopupService {

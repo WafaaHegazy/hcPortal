@@ -2,6 +2,8 @@ package com.sirtts.web.rest;
 
 import com.sirtts.HcPortalApp;
 import com.sirtts.domain.User;
+import com.sirtts.domain.enumeration.Ethnicity;
+import com.sirtts.domain.enumeration.Gender;
 import com.sirtts.repository.UserRepository;
 import com.sirtts.security.jwt.TokenProvider;
 import com.sirtts.service.UserService;
@@ -17,6 +19,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import java.time.LocalDate;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -69,6 +73,11 @@ public class UserJWTControllerIntTest {
         user.setLogin("user-jwt-controller");
         user.setEmail("user-jwt-controller@example.com");
         user.setActivated(true);
+        user.setGender(Gender.MALE);
+        user.setEthnicity(Ethnicity.OTHER_ETHNICITY);
+        user.setMaritalStatus("martial");
+        user.setIsDoctor(false);
+        user.setBirthdate(LocalDate.now());
         user.setPassword(passwordEncoder.encode("test"));
 
         userRepository.save(user);
@@ -91,6 +100,11 @@ public class UserJWTControllerIntTest {
         User user = new User();
         user.setLogin("user-jwt-controller-remember-me");
         user.setEmail("user-jwt-controller-remember-me@example.com");
+        user.setGender(Gender.MALE);
+        user.setEthnicity(Ethnicity.OTHER_ETHNICITY);
+        user.setMaritalStatus("martial");
+        user.setIsDoctor(false);
+        user.setBirthdate(LocalDate.now());
         user.setActivated(true);
         user.setPassword(passwordEncoder.encode("test"));
 

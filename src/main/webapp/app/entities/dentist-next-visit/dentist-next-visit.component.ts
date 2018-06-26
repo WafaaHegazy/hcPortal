@@ -29,7 +29,6 @@ currentAccount: any;
     previousPage: any;
     reverse: any;
 
-
     constructor(
         private dentistNextVisitService: DentistNextVisitService,
         private parseLinks: JhiParseLinks,
@@ -50,7 +49,7 @@ currentAccount: any;
 
     loadAll() {
         this.dentistNextVisitService.query({
-            userids:this.principal.getLogin(),
+            userids: this.principal.getLogin(),
             page: this.page - 1,
             size: this.itemsPerPage,
             sort: this.sort()}).subscribe(

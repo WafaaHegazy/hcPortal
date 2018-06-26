@@ -42,7 +42,6 @@ export class VsHeartRateDialogComponent implements OnInit {
             this.subscribeToSaveResponse(
                 this.vsHeartRateService.update(this.vsHeartRate));
         } else {
-            debugger;
             this.subscribeToSaveResponse(
                 this.vsHeartRateService.create(this.vsHeartRate));
         }

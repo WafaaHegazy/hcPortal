@@ -53,14 +53,14 @@ export class RegisterComponent implements OnInit, AfterViewInit {
             this.languageService.getCurrent().then((key) => {
                 this.registerAccount.langKey = key;
                 this.month = this.birthdate.month;
-                if(this.month.toString().length == 1) {
+                if (this.month.toString().length === 1) {
                     this.month = '0' + this.birthdate.month.toString();
                 }
-                this.day = this.birthdate.day+1;
-                if(this.day.toString().length == 1) {
+                this.day = this.birthdate.day + 1;
+                if (this.day.toString().length === 1) {
                     this.day = '0' + (this.birthdate.day + 1).toString();
                 }
-                this.registerAccount.birthdate = this.birthdate.year + '-' + this.month+ '-' + this.day;
+                this.registerAccount.birthdate = this.birthdate.year + '-' + this.month + '-' + this.day;
                 this.registerService.save(this.registerAccount).subscribe(() => {
                     this.success = true;
                 }, (response) => this.processError(response));

@@ -4,7 +4,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
 import { DentistVisit } from './dentist-visit.model';
 import { DentistVisitService } from './dentist-visit.service';
-import {DatePipe} from "@angular/common";
+import {DatePipe} from '@angular/common';
 
 @Injectable()
 export class DentistVisitPopupService {

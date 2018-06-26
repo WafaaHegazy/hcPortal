@@ -60,8 +60,6 @@ export class NavbarComponent implements OnInit {
         return this.principal.isAuthenticated();
     }
 
-
-
     login() {
         this.modalRef = this.loginModalService.open();
     }
@@ -82,7 +80,10 @@ export class NavbarComponent implements OnInit {
 
     isFemale() {
         this.gender = this.principal.getGender();
-        if(this.gender == 'FEMALE') return true;
-        else return false;
+        if (this.gender === 'FEMALE') {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -4,7 +4,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
 import { VsRespiratoryRate } from './vs-respiratory-rate.model';
 import { VsRespiratoryRateService } from './vs-respiratory-rate.service';
-import {DatePipe} from "@angular/common";
+import {DatePipe} from '@angular/common';
 
 @Injectable()
 export class VsRespiratoryRatePopupService {

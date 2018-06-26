@@ -18,7 +18,6 @@ export class DiabetesSugarTestService {
     constructor(private http: HttpClient, private dateUtils: JhiDateUtils) { }
 
     create(diabetesSugarTest: DiabetesSugarTest): Observable<EntityResponseType> {
-        debugger;
         const copy = this.convert(diabetesSugarTest);
         return this.http.post<DiabetesSugarTest>(this.resourceUrl, copy, { observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));

@@ -242,8 +242,8 @@ public class BloodTestResourceIntTest {
     private static final Double DEFAULT_WHITE_BLOOD_CELL_COUNT = 1D;
     private static final Double UPDATED_WHITE_BLOOD_CELL_COUNT = 2D;
 
-    private static final LocalDateTime DEFAULT_MEASURMENTDATE = LocalDateTime.now(ZoneOffset.UTC);
-    private static final LocalDateTime UPDATED_MEASURMENTDATE = LocalDateTime.now(ZoneOffset.UTC);
+    private static final LocalDateTime DEFAULT_MEASURMENTDATE = LocalDateTime.ofEpochSecond(1L,0,ZoneOffset.UTC);
+    private static final LocalDateTime UPDATED_MEASURMENTDATE = LocalDateTime.ofEpochSecond(1L,0,ZoneOffset.UTC);
 
     @Autowired
     private BloodTestRepository bloodTestRepository;
