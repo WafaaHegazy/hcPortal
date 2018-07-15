@@ -1,6 +1,5 @@
 package com.sirtts.service;
 
-import com.sirtts.config.CacheConfiguration;
 import com.sirtts.domain.Authority;
 import com.sirtts.domain.User;
 import com.sirtts.repository.AuthorityRepository;

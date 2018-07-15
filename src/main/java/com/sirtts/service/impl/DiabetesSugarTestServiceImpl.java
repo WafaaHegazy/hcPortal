@@ -6,7 +6,6 @@ import com.sirtts.domain.DiabetesSugarTest;
 import com.sirtts.repository.DiabetesSugarTestRepository;
 import com.sirtts.service.dto.DiabetesSugarTestDTO;
 import com.sirtts.service.mapper.DiabetesSugarTestMapper;
-import io.swagger.annotations.Authorization;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -15,8 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.Optional;
-
 
 /**
  * Service Implementation for managing DiabetesSugarTest.

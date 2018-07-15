@@ -2,10 +2,8 @@ package com.sirtts.service.dto;
 
 
 import java.time.LocalDateTime;
-import java.time.LocalDateTime;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**

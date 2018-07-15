@@ -1,7 +1,6 @@
 package com.sirtts.web.rest;
 
 import com.sirtts.HcPortalApp;
-import com.sirtts.config.CacheConfiguration;
 import com.sirtts.domain.Authority;
 import com.sirtts.domain.User;
 import com.sirtts.repository.UserRepository;

@@ -4,8 +4,6 @@ import com.sirtts.service.dto.DentistNextVisitDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.time.LocalDateTime;
-
 /**
  * Service Interface for managing DentistNextVisit.
  */

@@ -4,9 +4,6 @@ import com.sirtts.service.dto.VsSpo2DTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 /**
  * Service Interface for managing VsSpo2.
  */

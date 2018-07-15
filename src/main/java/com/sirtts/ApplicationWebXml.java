@@ -4,8 +4,6 @@ import com.sirtts.config.DefaultProfileUtil;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
-import java.util.TimeZone;
-
 /**
  * This is a helper Java class that provides an alternative to creating a web.xml.
  * This will be invoked only when the application is deployed to a servlet container like Tomcat, JBoss etc.
