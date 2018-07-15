@@ -14,7 +14,8 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcPortalApp.vsHeartRate.bpm" for="field_bpm">Bpm</label>
-            <input type="number" class="form-control" name="bpm" id="field_bpm"
+            <output name="hrOut" id="hrOutId">160</output>
+            <input type="range" class="form-control" name="bpm" id="field_bpm" min="20" max="300" step="1" oninput="hrOutId.value = field_bpm.value"
                 [(ngModel)]="vsHeartRate.bpm" required/>
             <div [hidden]="!(editForm.controls.bpm?.dirty && editForm.controls.bpm?.invalid)">
                 <small class="form-text text-danger"

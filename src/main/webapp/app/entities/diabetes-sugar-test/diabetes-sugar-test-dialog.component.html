@@ -15,8 +15,9 @@
 
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcPortalApp.diabetesSugarTest.result" for="field_result">Result</label>
-            <input type="number" class="form-control" name="result" id="field_result"
-                [(ngModel)]="diabetesSugarTest.result" required/>
+            <output name="dstOut" id="dstOutId">180</output>
+            <input type="range" class="form-control" name="result" id="field_result" min="60" max="300"
+                oninput="dstOutId.value = field_result.value" [(ngModel)]="diabetesSugarTest.result" required/>
             <div [hidden]="!(editForm.controls.result?.dirty && editForm.controls.result?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.result?.errors?.required" jhiTranslate="entity.validation.required">

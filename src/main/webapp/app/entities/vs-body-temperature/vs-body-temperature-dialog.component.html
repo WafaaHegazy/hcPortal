@@ -14,8 +14,9 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcPortalApp.vsBodyTemperature.celsius" for="field_celsius">Celsius</label>
-            <input type="number" class="form-control" name="celsius" id="field_celsius"
-                [(ngModel)]="vsBodyTemperature.celsius" required/>
+            <output name="btOut" id="btOutId">39</output>
+            <input type="range" class="form-control" name="celsius" id="field_celsius" min="34" max="44" step="0.5"
+                oninput="btOutId.value = field_celsius.value" [(ngModel)]="vsBodyTemperature.celsius" required/>
             <div [hidden]="!(editForm.controls.celsius?.dirty && editForm.controls.celsius?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.celsius?.errors?.required" jhiTranslate="entity.validation.required">

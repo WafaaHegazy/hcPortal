@@ -14,7 +14,8 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="hcPortalApp.vsSpo2.percent" for="field_percent">Percent</label>
-            <input type="number" class="form-control" name="percent" id="field_percent"
+            <output name="spoOut" id="spoOutId">92</output>
+            <input type="range" class="form-control" name="percent" id="field_percent" min="85" max="99" oninput="spoOutId.value = field_percent.value"
                 [(ngModel)]="vsSpo2.percent" required/>
             <div [hidden]="!(editForm.controls.percent?.dirty && editForm.controls.percent?.invalid)">
                 <small class="form-text text-danger"
