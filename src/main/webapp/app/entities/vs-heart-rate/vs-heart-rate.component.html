@@ -1,9 +1,12 @@
 <div>
     <h2>
         <span jhiTranslate="hcPortalApp.vsHeartRate.home.title">Vs Heart Rates</span>
-        <button class="btn btn-primary float-right jh-create-entity create-vs-heart-rate" [routerLink]="['/', { outlets: { popup: ['vs-heart-rate-new'] } }]">
+        <button class="btn btn-info" [routerLink]="['/', { outlets: { popup: ['vs-heart-rate-info'] } }]"><span class="fa fa-info"></span>
+        </button>
+        <button class="btn btn-primary float-right jh-create-entity create-vs-heart-rate"
+                [routerLink]="['/', { outlets: { popup: ['vs-heart-rate-new'] } }]">
             <span class="fa fa-plus"></span>
-            <span  jhiTranslate="hcPortalApp.vsHeartRate.home.createLabel">
+            <span jhiTranslate="hcPortalApp.vsHeartRate.home.createLabel">
             Create new Vs Heart Rate
             </span>
         </button>
@@ -16,10 +19,12 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="userid"><span jhiTranslate="hcPortalApp.vsHeartRate.userid">Userid</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="bpm"><span jhiTranslate="hcPortalApp.vsHeartRate.bpm">Bpm</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="measurmentdate"><span jhiTranslate="hcPortalApp.vsHeartRate.measurmentdate">Measurmentdate</span> <span class="fa fa-sort"></span></th>
-            <th></th>
+                <th jhiSortBy="userid"><span jhiTranslate="hcPortalApp.vsHeartRate.userid">Userid</span> <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="bpm"><span jhiTranslate="hcPortalApp.vsHeartRate.bpm">Bpm</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="measurmentdate"><span jhiTranslate="hcPortalApp.vsHeartRate.measurmentdate">Measurmentdate</span> <span
+                    class="fa fa-sort"></span></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -46,7 +51,8 @@
             <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
         </div>
         <div class="row justify-content-center">
-            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true"
+                            [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
     </div>
 </div>

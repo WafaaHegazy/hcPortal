@@ -6,3 +6,4 @@ export * from './vs-spo-2-delete-dialog.component';
 export * from './vs-spo-2-detail.component';
 export * from './vs-spo-2.component';
 export * from './vs-spo-2.route';
+export * from './vs-spo-2-info.component';

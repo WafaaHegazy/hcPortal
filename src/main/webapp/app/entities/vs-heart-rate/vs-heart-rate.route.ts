@@ -1,17 +1,19 @@
-import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
-import { JhiPaginationUtil } from 'ng-jhipster';
+import {Injectable} from '@angular/core';
+import {Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes} from '@angular/router';
+import {JhiPaginationUtil} from 'ng-jhipster';
 
-import { UserRouteAccessService } from '../../shared';
-import { VsHeartRateComponent } from './vs-heart-rate.component';
-import { VsHeartRateDetailComponent } from './vs-heart-rate-detail.component';
-import { VsHeartRatePopupComponent } from './vs-heart-rate-dialog.component';
-import { VsHeartRateDeletePopupComponent } from './vs-heart-rate-delete-dialog.component';
+import {UserRouteAccessService} from '../../shared';
+import {VsHeartRateComponent} from './vs-heart-rate.component';
+import {VsHeartRateDetailComponent} from './vs-heart-rate-detail.component';
+import {VsHeartRatePopupComponent} from './vs-heart-rate-dialog.component';
+import {VsHeartRateDeletePopupComponent} from './vs-heart-rate-delete-dialog.component';
+import {VsHeartRateInfoPopupComponent} from './vs-heart-rate-info.component';
 
 @Injectable()
 export class VsHeartRateResolvePagingParams implements Resolve<any> {
 
-    constructor(private paginationUtil: JhiPaginationUtil) {}
+    constructor(private paginationUtil: JhiPaginationUtil) {
+    }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const page = route.queryParams['page'] ? route.queryParams['page'] : '1';
@@ -20,7 +22,7 @@ export class VsHeartRateResolvePagingParams implements Resolve<any> {
             page: this.paginationUtil.parsePage(page),
             predicate: this.paginationUtil.parsePredicate(sort),
             ascending: this.paginationUtil.parseAscending(sort)
-      };
+        };
     }
 }
 
@@ -71,6 +73,16 @@ export const vsHeartRatePopupRoute: Routes = [
     {
         path: 'vs-heart-rate/:id/delete',
         component: VsHeartRateDeletePopupComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'hcPortalApp.vsHeartRate.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
+    },
+    {
+        path: 'vs-heart-rate-info',
+        component: VsHeartRateInfoPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'hcPortalApp.vsHeartRate.home.title'

@@ -1,7 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { HcPortalSharedModule } from '../../shared';
+import {HcPortalSharedModule} from '../../shared';
 import {
     VsSpo2Service,
     VsSpo2PopupService,
@@ -14,6 +14,8 @@ import {
     vsSpo2Route,
     vsSpo2PopupRoute,
     VsSpo2ResolvePagingParams,
+    VsSpo2InfoComponent,
+    VsSpo2InfoPopupComponent
 } from './';
 
 const ENTITY_STATES = [
@@ -33,6 +35,8 @@ const ENTITY_STATES = [
         VsSpo2DeleteDialogComponent,
         VsSpo2PopupComponent,
         VsSpo2DeletePopupComponent,
+        VsSpo2InfoComponent,
+        VsSpo2InfoPopupComponent
     ],
     entryComponents: [
         VsSpo2Component,
@@ -40,6 +44,8 @@ const ENTITY_STATES = [
         VsSpo2PopupComponent,
         VsSpo2DeleteDialogComponent,
         VsSpo2DeletePopupComponent,
+        VsSpo2InfoComponent,
+        VsSpo2InfoPopupComponent
     ],
     providers: [
         VsSpo2Service,
@@ -48,4 +54,5 @@ const ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class HcPortalVsSpo2Module {}
+export class HcPortalVsSpo2Module {
+}

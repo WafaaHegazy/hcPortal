@@ -6,3 +6,4 @@ export * from './vs-respiratory-rate-delete-dialog.component';
 export * from './vs-respiratory-rate-detail.component';
 export * from './vs-respiratory-rate.component';
 export * from './vs-respiratory-rate.route';
+export * from './vs-respiratory-rate-info.component';

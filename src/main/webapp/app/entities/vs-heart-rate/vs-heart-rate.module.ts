@@ -1,7 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { HcPortalSharedModule } from '../../shared';
+import {HcPortalSharedModule} from '../../shared';
 import {
     VsHeartRateService,
     VsHeartRatePopupService,
@@ -14,6 +14,8 @@ import {
     vsHeartRateRoute,
     vsHeartRatePopupRoute,
     VsHeartRateResolvePagingParams,
+    VsHeartRateInfoComponent,
+    VsHeartRateInfoPopupComponent,
 } from './';
 
 const ENTITY_STATES = [
@@ -33,6 +35,8 @@ const ENTITY_STATES = [
         VsHeartRateDeleteDialogComponent,
         VsHeartRatePopupComponent,
         VsHeartRateDeletePopupComponent,
+        VsHeartRateInfoComponent,
+        VsHeartRateInfoPopupComponent,
     ],
     entryComponents: [
         VsHeartRateComponent,
@@ -40,6 +44,8 @@ const ENTITY_STATES = [
         VsHeartRatePopupComponent,
         VsHeartRateDeleteDialogComponent,
         VsHeartRateDeletePopupComponent,
+        VsHeartRateInfoComponent,
+        VsHeartRateInfoPopupComponent,
     ],
     providers: [
         VsHeartRateService,
@@ -48,4 +54,5 @@ const ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class HcPortalVsHeartRateModule {}
+export class HcPortalVsHeartRateModule {
+}

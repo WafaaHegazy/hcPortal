@@ -1,7 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { HcPortalSharedModule } from '../../shared';
+import {HcPortalSharedModule} from '../../shared';
 import {
     MenstrualCycleService,
     MenstrualCyclePopupService,
@@ -14,6 +14,8 @@ import {
     menstrualCycleRoute,
     menstrualCyclePopupRoute,
     MenstrualCycleResolvePagingParams,
+    MenstrualCycleInfoComponent,
+    MenstrualCycleInfoPopupComponent
 } from './';
 
 const ENTITY_STATES = [
@@ -33,6 +35,8 @@ const ENTITY_STATES = [
         MenstrualCycleDeleteDialogComponent,
         MenstrualCyclePopupComponent,
         MenstrualCycleDeletePopupComponent,
+        MenstrualCycleInfoComponent,
+        MenstrualCycleInfoPopupComponent
     ],
     entryComponents: [
         MenstrualCycleComponent,
@@ -40,6 +44,8 @@ const ENTITY_STATES = [
         MenstrualCyclePopupComponent,
         MenstrualCycleDeleteDialogComponent,
         MenstrualCycleDeletePopupComponent,
+        MenstrualCycleInfoComponent,
+        MenstrualCycleInfoPopupComponent
     ],
     providers: [
         MenstrualCycleService,
@@ -48,4 +54,5 @@ const ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class HcPortalMenstrualCycleModule {}
+export class HcPortalMenstrualCycleModule {
+}

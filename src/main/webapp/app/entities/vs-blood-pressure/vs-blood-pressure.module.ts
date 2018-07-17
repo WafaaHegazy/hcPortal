@@ -1,7 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { HcPortalSharedModule } from '../../shared';
+import {HcPortalSharedModule} from '../../shared';
 import {
     VsBloodPressureService,
     VsBloodPressurePopupService,
@@ -14,6 +14,8 @@ import {
     vsBloodPressureRoute,
     vsBloodPressurePopupRoute,
     VsBloodPressureResolvePagingParams,
+    VsBloodPressureInfoComponent,
+    VsBloodPressureInfoPopupComponent
 } from './';
 
 const ENTITY_STATES = [
@@ -33,6 +35,8 @@ const ENTITY_STATES = [
         VsBloodPressureDeleteDialogComponent,
         VsBloodPressurePopupComponent,
         VsBloodPressureDeletePopupComponent,
+        VsBloodPressureInfoComponent,
+        VsBloodPressureInfoPopupComponent
     ],
     entryComponents: [
         VsBloodPressureComponent,
@@ -40,6 +44,8 @@ const ENTITY_STATES = [
         VsBloodPressurePopupComponent,
         VsBloodPressureDeleteDialogComponent,
         VsBloodPressureDeletePopupComponent,
+        VsBloodPressureInfoComponent,
+        VsBloodPressureInfoPopupComponent
     ],
     providers: [
         VsBloodPressureService,
@@ -48,4 +54,5 @@ const ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class HcPortalVsBloodPressureModule {}
+export class HcPortalVsBloodPressureModule {
+}

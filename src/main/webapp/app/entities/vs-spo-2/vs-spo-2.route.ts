@@ -1,17 +1,19 @@
-import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
-import { JhiPaginationUtil } from 'ng-jhipster';
+import {Injectable} from '@angular/core';
+import {Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes} from '@angular/router';
+import {JhiPaginationUtil} from 'ng-jhipster';
 
-import { UserRouteAccessService } from '../../shared';
-import { VsSpo2Component } from './vs-spo-2.component';
-import { VsSpo2DetailComponent } from './vs-spo-2-detail.component';
-import { VsSpo2PopupComponent } from './vs-spo-2-dialog.component';
-import { VsSpo2DeletePopupComponent } from './vs-spo-2-delete-dialog.component';
+import {UserRouteAccessService} from '../../shared';
+import {VsSpo2Component} from './vs-spo-2.component';
+import {VsSpo2DetailComponent} from './vs-spo-2-detail.component';
+import {VsSpo2PopupComponent} from './vs-spo-2-dialog.component';
+import {VsSpo2DeletePopupComponent} from './vs-spo-2-delete-dialog.component';
+import {VsSpo2InfoPopupComponent} from './vs-spo-2-info.component';
 
 @Injectable()
 export class VsSpo2ResolvePagingParams implements Resolve<any> {
 
-    constructor(private paginationUtil: JhiPaginationUtil) {}
+    constructor(private paginationUtil: JhiPaginationUtil) {
+    }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const page = route.queryParams['page'] ? route.queryParams['page'] : '1';
@@ -20,7 +22,7 @@ export class VsSpo2ResolvePagingParams implements Resolve<any> {
             page: this.paginationUtil.parsePage(page),
             predicate: this.paginationUtil.parsePredicate(sort),
             ascending: this.paginationUtil.parseAscending(sort)
-      };
+        };
     }
 }
 
@@ -71,6 +73,16 @@ export const vsSpo2PopupRoute: Routes = [
     {
         path: 'vs-spo-2/:id/delete',
         component: VsSpo2DeletePopupComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'hcPortalApp.vsSpo2.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
+    },
+    {
+        path: 'vs-spo-2-info',
+        component: VsSpo2InfoPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'hcPortalApp.vsSpo2.home.title'

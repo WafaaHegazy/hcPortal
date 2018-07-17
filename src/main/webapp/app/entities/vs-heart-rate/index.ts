@@ -6,3 +6,4 @@ export * from './vs-heart-rate-delete-dialog.component';
 export * from './vs-heart-rate-detail.component';
 export * from './vs-heart-rate.component';
 export * from './vs-heart-rate.route';
+export * from './vs-heart-rate-info.component';

@@ -1,7 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { HcPortalSharedModule } from '../../shared';
+import {HcPortalSharedModule} from '../../shared';
 import {
     VsRespiratoryRateService,
     VsRespiratoryRatePopupService,
@@ -14,6 +14,8 @@ import {
     vsRespiratoryRateRoute,
     vsRespiratoryRatePopupRoute,
     VsRespiratoryRateResolvePagingParams,
+    VsRespiratoryRateInfoComponent,
+    VsRespiratoryRateInfoPopupComponent
 } from './';
 
 const ENTITY_STATES = [
@@ -33,6 +35,8 @@ const ENTITY_STATES = [
         VsRespiratoryRateDeleteDialogComponent,
         VsRespiratoryRatePopupComponent,
         VsRespiratoryRateDeletePopupComponent,
+        VsRespiratoryRateInfoComponent,
+        VsRespiratoryRateInfoPopupComponent
     ],
     entryComponents: [
         VsRespiratoryRateComponent,
@@ -40,6 +44,8 @@ const ENTITY_STATES = [
         VsRespiratoryRatePopupComponent,
         VsRespiratoryRateDeleteDialogComponent,
         VsRespiratoryRateDeletePopupComponent,
+        VsRespiratoryRateInfoComponent,
+        VsRespiratoryRateInfoPopupComponent
     ],
     providers: [
         VsRespiratoryRateService,
@@ -48,4 +54,5 @@ const ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class HcPortalVsRespiratoryRateModule {}
+export class HcPortalVsRespiratoryRateModule {
+}

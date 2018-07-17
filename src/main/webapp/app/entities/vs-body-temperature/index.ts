@@ -6,3 +6,4 @@ export * from './vs-body-temperature-delete-dialog.component';
 export * from './vs-body-temperature-detail.component';
 export * from './vs-body-temperature.component';
 export * from './vs-body-temperature.route';
+export * from './vs-body-temperature-info.component';

@@ -6,3 +6,4 @@ export * from './blood-test-delete-dialog.component';
 export * from './blood-test-detail.component';
 export * from './blood-test.component';
 export * from './blood-test.route';
+export * from './blood-test-info.component';

@@ -6,3 +6,4 @@ export * from './dentist-visit-delete-dialog.component';
 export * from './dentist-visit-detail.component';
 export * from './dentist-visit.component';
 export * from './dentist-visit.route';
+export * from './dentist-visit-info.component';

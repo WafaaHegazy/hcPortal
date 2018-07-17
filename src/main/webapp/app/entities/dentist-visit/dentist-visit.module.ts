@@ -1,7 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { HcPortalSharedModule } from '../../shared';
+import {HcPortalSharedModule} from '../../shared';
 import {
     DentistVisitService,
     DentistVisitPopupService,
@@ -14,6 +14,8 @@ import {
     dentistVisitRoute,
     dentistVisitPopupRoute,
     DentistVisitResolvePagingParams,
+    DentistVisitInfoComponent,
+    DentistVisitInfoPopupComponent
 } from './';
 
 const ENTITY_STATES = [
@@ -33,6 +35,8 @@ const ENTITY_STATES = [
         DentistVisitDeleteDialogComponent,
         DentistVisitPopupComponent,
         DentistVisitDeletePopupComponent,
+        DentistVisitInfoComponent,
+        DentistVisitInfoPopupComponent
     ],
     entryComponents: [
         DentistVisitComponent,
@@ -40,6 +44,8 @@ const ENTITY_STATES = [
         DentistVisitPopupComponent,
         DentistVisitDeleteDialogComponent,
         DentistVisitDeletePopupComponent,
+        DentistVisitInfoComponent,
+        DentistVisitInfoPopupComponent
     ],
     providers: [
         DentistVisitService,
@@ -48,4 +54,5 @@ const ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class HcPortalDentistVisitModule {}
+export class HcPortalDentistVisitModule {
+}

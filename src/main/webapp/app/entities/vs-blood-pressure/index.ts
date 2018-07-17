@@ -6,3 +6,4 @@ export * from './vs-blood-pressure-delete-dialog.component';
 export * from './vs-blood-pressure-detail.component';
 export * from './vs-blood-pressure.component';
 export * from './vs-blood-pressure.route';
+export * from './vs-blood-pressure-info.component';

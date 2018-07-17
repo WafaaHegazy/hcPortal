@@ -1,9 +1,12 @@
 <div>
     <h2>
         <span jhiTranslate="hcPortalApp.bloodTest.home.title">Blood Tests</span>
-        <button class="btn btn-primary float-right jh-create-entity create-blood-test" [routerLink]="['/', { outlets: { popup: ['blood-test-new'] } }]">
+        <button class="btn btn-info" [routerLink]="['/', { outlets: { popup: ['blood-test-info'] } }]"><span
+            class="fa fa-info"></span></button>
+        <button class="btn btn-primary float-right jh-create-entity create-blood-test"
+                [routerLink]="['/', { outlets: { popup: ['blood-test-new'] } }]">
             <span class="fa fa-plus"></span>
-            <span  jhiTranslate="hcPortalApp.bloodTest.home.createLabel">
+            <span jhiTranslate="hcPortalApp.bloodTest.home.createLabel">
             Create new Blood Test
             </span>
         </button>
@@ -16,74 +19,141 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="userid"><span jhiTranslate="hcPortalApp.bloodTest.userid">Userid</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="hydroxyprogesterone17"><span jhiTranslate="hcPortalApp.bloodTest.hydroxyprogesterone17">Hydroxyprogesterone 17</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="hydroxyvitaminD25"><span jhiTranslate="hcPortalApp.bloodTest.hydroxyvitaminD25">Hydroxyvitamin D 25</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="acetoacetate"><span jhiTranslate="hcPortalApp.bloodTest.acetoacetate">Acetoacetate</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="acidity"><span jhiTranslate="hcPortalApp.bloodTest.acidity">Acidity</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="alcohol"><span jhiTranslate="hcPortalApp.bloodTest.alcohol">Alcohol</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="ammonia"><span jhiTranslate="hcPortalApp.bloodTest.ammonia">Ammonia</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="amylase"><span jhiTranslate="hcPortalApp.bloodTest.amylase">Amylase</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="ascorbicAcid"><span jhiTranslate="hcPortalApp.bloodTest.ascorbicAcid">Ascorbic Acid</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="bicarbonate"><span jhiTranslate="hcPortalApp.bloodTest.bicarbonate">Bicarbonate</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="bilirubin"><span jhiTranslate="hcPortalApp.bloodTest.bilirubin">Bilirubin</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="bloodVolume"><span jhiTranslate="hcPortalApp.bloodTest.bloodVolume">Blood Volume</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="calcium"><span jhiTranslate="hcPortalApp.bloodTest.calcium">Calcium</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="carbonDioxidePressure"><span jhiTranslate="hcPortalApp.bloodTest.carbonDioxidePressure">Carbon Dioxide Pressure</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="carbonMonoxide"><span jhiTranslate="hcPortalApp.bloodTest.carbonMonoxide">Carbon Monoxide</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="cD4CellCount"><span jhiTranslate="hcPortalApp.bloodTest.cD4CellCount">C D 4 Cell Count</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="ceruloplasmin"><span jhiTranslate="hcPortalApp.bloodTest.ceruloplasmin">Ceruloplasmin</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="chloride"><span jhiTranslate="hcPortalApp.bloodTest.chloride">Chloride</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="completeBloodCellCount"><span jhiTranslate="hcPortalApp.bloodTest.completeBloodCellCount">Complete Blood Cell Count</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="copper"><span jhiTranslate="hcPortalApp.bloodTest.copper">Copper</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="creatineKinase"><span jhiTranslate="hcPortalApp.bloodTest.creatineKinase">Creatine Kinase</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="creatineKinaseIsoenzymes"><span jhiTranslate="hcPortalApp.bloodTest.creatineKinaseIsoenzymes">Creatine Kinase Isoenzymes</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="creatinine"><span jhiTranslate="hcPortalApp.bloodTest.creatinine">Creatinine</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="electrolytes"><span jhiTranslate="hcPortalApp.bloodTest.electrolytes">Electrolytes</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="erythrocyteSedimentationRate"><span jhiTranslate="hcPortalApp.bloodTest.erythrocyteSedimentationRate">Erythrocyte Sedimentation Rate</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="glucose"><span jhiTranslate="hcPortalApp.bloodTest.glucose">Glucose</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="hematocrit"><span jhiTranslate="hcPortalApp.bloodTest.hematocrit">Hematocrit</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="hemoglobin"><span jhiTranslate="hcPortalApp.bloodTest.hemoglobin">Hemoglobin</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="iron"><span jhiTranslate="hcPortalApp.bloodTest.iron">Iron</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="ironBindingCapacity"><span jhiTranslate="hcPortalApp.bloodTest.ironBindingCapacity">Iron Binding Capacity</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="lactate"><span jhiTranslate="hcPortalApp.bloodTest.lactate">Lactate</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="lacticDehydrogenase"><span jhiTranslate="hcPortalApp.bloodTest.lacticDehydrogenase">Lactic Dehydrogenase</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="lead"><span jhiTranslate="hcPortalApp.bloodTest.lead">Lead</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="lipase"><span jhiTranslate="hcPortalApp.bloodTest.lipase">Lipase</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="zinc"><span jhiTranslate="hcPortalApp.bloodTest.zinc">Zinc</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="lipidsCholesterol"><span jhiTranslate="hcPortalApp.bloodTest.lipidsCholesterol">Lipids Cholesterol</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="lipidsTriglycerides"><span jhiTranslate="hcPortalApp.bloodTest.lipidsTriglycerides">Lipids Triglycerides</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="magnesium"><span jhiTranslate="hcPortalApp.bloodTest.magnesium">Magnesium</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="meanCorpuscularHemoglobin"><span jhiTranslate="hcPortalApp.bloodTest.meanCorpuscularHemoglobin">Mean Corpuscular Hemoglobin</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="meanCorpuscularHemoglobinConcentration"><span jhiTranslate="hcPortalApp.bloodTest.meanCorpuscularHemoglobinConcentration">Mean Corpuscular Hemoglobin Concentration</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="meanCorpuscularVolume"><span jhiTranslate="hcPortalApp.bloodTest.meanCorpuscularVolume">Mean Corpuscular Volume</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="osmolality"><span jhiTranslate="hcPortalApp.bloodTest.osmolality">Osmolality</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="oxygenPressure"><span jhiTranslate="hcPortalApp.bloodTest.oxygenPressure">Oxygen Pressure</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="oxygenSaturation"><span jhiTranslate="hcPortalApp.bloodTest.oxygenSaturation">Oxygen Saturation</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="phosphataseProstatic"><span jhiTranslate="hcPortalApp.bloodTest.phosphataseProstatic">Phosphatase Prostatic</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="phosphatase"><span jhiTranslate="hcPortalApp.bloodTest.phosphatase">Phosphatase</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="phosphorus"><span jhiTranslate="hcPortalApp.bloodTest.phosphorus">Phosphorus</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="plateletCount"><span jhiTranslate="hcPortalApp.bloodTest.plateletCount">Platelet Count</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="potassium"><span jhiTranslate="hcPortalApp.bloodTest.potassium">Potassium</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="prostateSpecificAntigen"><span jhiTranslate="hcPortalApp.bloodTest.prostateSpecificAntigen">Prostate Specific Antigen</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="proteinsTotal"><span jhiTranslate="hcPortalApp.bloodTest.proteinsTotal">Proteins Total</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="proteinsAlbumin"><span jhiTranslate="hcPortalApp.bloodTest.proteinsAlbumin">Proteins Albumin</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="proteinsGlobulin"><span jhiTranslate="hcPortalApp.bloodTest.proteinsGlobulin">Proteins Globulin</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="prothrombin"><span jhiTranslate="hcPortalApp.bloodTest.prothrombin">Prothrombin</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="pyruvicAcid"><span jhiTranslate="hcPortalApp.bloodTest.pyruvicAcid">Pyruvic Acid</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="redBloodCellCount"><span jhiTranslate="hcPortalApp.bloodTest.redBloodCellCount">Red Blood Cell Count</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="sodium"><span jhiTranslate="hcPortalApp.bloodTest.sodium">Sodium</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="thyroidStimulatingHormone"><span jhiTranslate="hcPortalApp.bloodTest.thyroidStimulatingHormone">Thyroid Stimulating Hormone</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="transaminaseAlanine"><span jhiTranslate="hcPortalApp.bloodTest.transaminaseAlanine">Transaminase Alanine</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="transaminaseAspartate"><span jhiTranslate="hcPortalApp.bloodTest.transaminaseAspartate">Transaminase Aspartate</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="ureaNitrogen"><span jhiTranslate="hcPortalApp.bloodTest.ureaNitrogen">Urea Nitrogen</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="bUNCreatinineRatio"><span jhiTranslate="hcPortalApp.bloodTest.bUNCreatinineRatio">B UN Creatinine Ratio</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="uricAcid"><span jhiTranslate="hcPortalApp.bloodTest.uricAcid">Uric Acid</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="vitaminA"><span jhiTranslate="hcPortalApp.bloodTest.vitaminA">Vitamin A</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="wBC"><span jhiTranslate="hcPortalApp.bloodTest.wBC">W BC</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="whiteBloodCellCount"><span jhiTranslate="hcPortalApp.bloodTest.whiteBloodCellCount">White Blood Cell Count</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="measurmentdate"><span jhiTranslate="hcPortalApp.bloodTest.measurmentdate">Measurmentdate</span> <span class="fa fa-sort"></span></th>
-            <th></th>
+                <th jhiSortBy="userid"><span jhiTranslate="hcPortalApp.bloodTest.userid">Userid</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="hydroxyprogesterone17"><span jhiTranslate="hcPortalApp.bloodTest.hydroxyprogesterone17">Hydroxyprogesterone 17</span>
+                    <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="hydroxyvitaminD25"><span jhiTranslate="hcPortalApp.bloodTest.hydroxyvitaminD25">Hydroxyvitamin D 25</span>
+                    <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="acetoacetate"><span jhiTranslate="hcPortalApp.bloodTest.acetoacetate">Acetoacetate</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="acidity"><span jhiTranslate="hcPortalApp.bloodTest.acidity">Acidity</span> <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="alcohol"><span jhiTranslate="hcPortalApp.bloodTest.alcohol">Alcohol</span> <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="ammonia"><span jhiTranslate="hcPortalApp.bloodTest.ammonia">Ammonia</span> <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="amylase"><span jhiTranslate="hcPortalApp.bloodTest.amylase">Amylase</span> <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="ascorbicAcid"><span jhiTranslate="hcPortalApp.bloodTest.ascorbicAcid">Ascorbic Acid</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="bicarbonate"><span jhiTranslate="hcPortalApp.bloodTest.bicarbonate">Bicarbonate</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="bilirubin"><span jhiTranslate="hcPortalApp.bloodTest.bilirubin">Bilirubin</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="bloodVolume"><span jhiTranslate="hcPortalApp.bloodTest.bloodVolume">Blood Volume</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="calcium"><span jhiTranslate="hcPortalApp.bloodTest.calcium">Calcium</span> <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="carbonDioxidePressure"><span jhiTranslate="hcPortalApp.bloodTest.carbonDioxidePressure">Carbon Dioxide Pressure</span>
+                    <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="carbonMonoxide"><span jhiTranslate="hcPortalApp.bloodTest.carbonMonoxide">Carbon Monoxide</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="cD4CellCount"><span jhiTranslate="hcPortalApp.bloodTest.cD4CellCount">C D 4 Cell Count</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="ceruloplasmin"><span jhiTranslate="hcPortalApp.bloodTest.ceruloplasmin">Ceruloplasmin</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="chloride"><span jhiTranslate="hcPortalApp.bloodTest.chloride">Chloride</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="completeBloodCellCount"><span jhiTranslate="hcPortalApp.bloodTest.completeBloodCellCount">Complete Blood Cell Count</span>
+                    <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="copper"><span jhiTranslate="hcPortalApp.bloodTest.copper">Copper</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="creatineKinase"><span jhiTranslate="hcPortalApp.bloodTest.creatineKinase">Creatine Kinase</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="creatineKinaseIsoenzymes"><span jhiTranslate="hcPortalApp.bloodTest.creatineKinaseIsoenzymes">Creatine Kinase Isoenzymes</span>
+                    <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="creatinine"><span jhiTranslate="hcPortalApp.bloodTest.creatinine">Creatinine</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="electrolytes"><span jhiTranslate="hcPortalApp.bloodTest.electrolytes">Electrolytes</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="erythrocyteSedimentationRate"><span jhiTranslate="hcPortalApp.bloodTest.erythrocyteSedimentationRate">Erythrocyte Sedimentation Rate</span>
+                    <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="glucose"><span jhiTranslate="hcPortalApp.bloodTest.glucose">Glucose</span> <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="hematocrit"><span jhiTranslate="hcPortalApp.bloodTest.hematocrit">Hematocrit</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="hemoglobin"><span jhiTranslate="hcPortalApp.bloodTest.hemoglobin">Hemoglobin</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="iron"><span jhiTranslate="hcPortalApp.bloodTest.iron">Iron</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="ironBindingCapacity"><span
+                    jhiTranslate="hcPortalApp.bloodTest.ironBindingCapacity">Iron Binding Capacity</span> <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="lactate"><span jhiTranslate="hcPortalApp.bloodTest.lactate">Lactate</span> <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="lacticDehydrogenase"><span
+                    jhiTranslate="hcPortalApp.bloodTest.lacticDehydrogenase">Lactic Dehydrogenase</span> <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="lead"><span jhiTranslate="hcPortalApp.bloodTest.lead">Lead</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="lipase"><span jhiTranslate="hcPortalApp.bloodTest.lipase">Lipase</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="zinc"><span jhiTranslate="hcPortalApp.bloodTest.zinc">Zinc</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="lipidsCholesterol"><span jhiTranslate="hcPortalApp.bloodTest.lipidsCholesterol">Lipids Cholesterol</span>
+                    <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="lipidsTriglycerides"><span
+                    jhiTranslate="hcPortalApp.bloodTest.lipidsTriglycerides">Lipids Triglycerides</span> <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="magnesium"><span jhiTranslate="hcPortalApp.bloodTest.magnesium">Magnesium</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="meanCorpuscularHemoglobin"><span jhiTranslate="hcPortalApp.bloodTest.meanCorpuscularHemoglobin">Mean Corpuscular Hemoglobin</span>
+                    <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="meanCorpuscularHemoglobinConcentration"><span
+                    jhiTranslate="hcPortalApp.bloodTest.meanCorpuscularHemoglobinConcentration">Mean Corpuscular Hemoglobin Concentration</span>
+                    <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="meanCorpuscularVolume"><span jhiTranslate="hcPortalApp.bloodTest.meanCorpuscularVolume">Mean Corpuscular Volume</span>
+                    <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="osmolality"><span jhiTranslate="hcPortalApp.bloodTest.osmolality">Osmolality</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="oxygenPressure"><span jhiTranslate="hcPortalApp.bloodTest.oxygenPressure">Oxygen Pressure</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="oxygenSaturation"><span jhiTranslate="hcPortalApp.bloodTest.oxygenSaturation">Oxygen Saturation</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="phosphataseProstatic"><span
+                    jhiTranslate="hcPortalApp.bloodTest.phosphataseProstatic">Phosphatase Prostatic</span> <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="phosphatase"><span jhiTranslate="hcPortalApp.bloodTest.phosphatase">Phosphatase</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="phosphorus"><span jhiTranslate="hcPortalApp.bloodTest.phosphorus">Phosphorus</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="plateletCount"><span jhiTranslate="hcPortalApp.bloodTest.plateletCount">Platelet Count</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="potassium"><span jhiTranslate="hcPortalApp.bloodTest.potassium">Potassium</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="prostateSpecificAntigen"><span jhiTranslate="hcPortalApp.bloodTest.prostateSpecificAntigen">Prostate Specific Antigen</span>
+                    <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="proteinsTotal"><span jhiTranslate="hcPortalApp.bloodTest.proteinsTotal">Proteins Total</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="proteinsAlbumin"><span jhiTranslate="hcPortalApp.bloodTest.proteinsAlbumin">Proteins Albumin</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="proteinsGlobulin"><span jhiTranslate="hcPortalApp.bloodTest.proteinsGlobulin">Proteins Globulin</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="prothrombin"><span jhiTranslate="hcPortalApp.bloodTest.prothrombin">Prothrombin</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="pyruvicAcid"><span jhiTranslate="hcPortalApp.bloodTest.pyruvicAcid">Pyruvic Acid</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="redBloodCellCount"><span jhiTranslate="hcPortalApp.bloodTest.redBloodCellCount">Red Blood Cell Count</span>
+                    <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="sodium"><span jhiTranslate="hcPortalApp.bloodTest.sodium">Sodium</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="thyroidStimulatingHormone"><span jhiTranslate="hcPortalApp.bloodTest.thyroidStimulatingHormone">Thyroid Stimulating Hormone</span>
+                    <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="transaminaseAlanine"><span
+                    jhiTranslate="hcPortalApp.bloodTest.transaminaseAlanine">Transaminase Alanine</span> <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="transaminaseAspartate"><span jhiTranslate="hcPortalApp.bloodTest.transaminaseAspartate">Transaminase Aspartate</span>
+                    <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="ureaNitrogen"><span jhiTranslate="hcPortalApp.bloodTest.ureaNitrogen">Urea Nitrogen</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="bUNCreatinineRatio"><span
+                    jhiTranslate="hcPortalApp.bloodTest.bUNCreatinineRatio">B UN Creatinine Ratio</span> <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="uricAcid"><span jhiTranslate="hcPortalApp.bloodTest.uricAcid">Uric Acid</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="vitaminA"><span jhiTranslate="hcPortalApp.bloodTest.vitaminA">Vitamin A</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="wBC"><span jhiTranslate="hcPortalApp.bloodTest.wBC">W BC</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="whiteBloodCellCount"><span
+                    jhiTranslate="hcPortalApp.bloodTest.whiteBloodCellCount">White Blood Cell Count</span> <span class="fa fa-sort"></span>
+                </th>
+                <th jhiSortBy="measurmentdate"><span jhiTranslate="hcPortalApp.bloodTest.measurmentdate">Measurmentdate</span> <span
+                    class="fa fa-sort"></span></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -174,7 +244,8 @@
             <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
         </div>
         <div class="row justify-content-center">
-            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true"
+                            [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
     </div>
 </div>

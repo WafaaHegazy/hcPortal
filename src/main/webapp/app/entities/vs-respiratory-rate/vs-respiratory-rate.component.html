@@ -1,9 +1,12 @@
 <div>
     <h2>
         <span jhiTranslate="hcPortalApp.vsRespiratoryRate.home.title">Vs Respiratory Rates</span>
-        <button class="btn btn-primary float-right jh-create-entity create-vs-respiratory-rate" [routerLink]="['/', { outlets: { popup: ['vs-respiratory-rate-new'] } }]">
+        <button class="btn btn-info" [routerLink]="['/', { outlets: { popup: ['vs-respiratory-rate-info'] } }]"><span
+            class="fa fa-info"></span></button>
+        <button class="btn btn-primary float-right jh-create-entity create-vs-respiratory-rate"
+                [routerLink]="['/', { outlets: { popup: ['vs-respiratory-rate-new'] } }]">
             <span class="fa fa-plus"></span>
-            <span  jhiTranslate="hcPortalApp.vsRespiratoryRate.home.createLabel">
+            <span jhiTranslate="hcPortalApp.vsRespiratoryRate.home.createLabel">
             Create new Vs Respiratory Rate
             </span>
         </button>
@@ -16,10 +19,13 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="userid"><span jhiTranslate="hcPortalApp.vsRespiratoryRate.userid">Userid</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="bpm"><span jhiTranslate="hcPortalApp.vsRespiratoryRate.bpm">Bpm</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="measurmentdate"><span jhiTranslate="hcPortalApp.vsRespiratoryRate.measurmentdate">Measurmentdate</span> <span class="fa fa-sort"></span></th>
-            <th></th>
+                <th jhiSortBy="userid"><span jhiTranslate="hcPortalApp.vsRespiratoryRate.userid">Userid</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="bpm"><span jhiTranslate="hcPortalApp.vsRespiratoryRate.bpm">Bpm</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="measurmentdate"><span jhiTranslate="hcPortalApp.vsRespiratoryRate.measurmentdate">Measurmentdate</span>
+                    <span class="fa fa-sort"></span></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -44,10 +50,12 @@
     </div>
     <div *ngIf="vsRespiratoryRates && vsRespiratoryRates.length">
         <div class="row justify-content-center">
-            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5"
+                            [itemsPerPage]="itemsPerPage"></jhi-item-count>
         </div>
         <div class="row justify-content-center">
-            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                            [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
     </div>
 </div>

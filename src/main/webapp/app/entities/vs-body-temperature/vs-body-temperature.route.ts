@@ -1,17 +1,19 @@
-import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
-import { JhiPaginationUtil } from 'ng-jhipster';
+import {Injectable} from '@angular/core';
+import {Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes} from '@angular/router';
+import {JhiPaginationUtil} from 'ng-jhipster';
 
-import { UserRouteAccessService } from '../../shared';
-import { VsBodyTemperatureComponent } from './vs-body-temperature.component';
-import { VsBodyTemperatureDetailComponent } from './vs-body-temperature-detail.component';
-import { VsBodyTemperaturePopupComponent } from './vs-body-temperature-dialog.component';
-import { VsBodyTemperatureDeletePopupComponent } from './vs-body-temperature-delete-dialog.component';
+import {UserRouteAccessService} from '../../shared';
+import {VsBodyTemperatureComponent} from './vs-body-temperature.component';
+import {VsBodyTemperatureDetailComponent} from './vs-body-temperature-detail.component';
+import {VsBodyTemperaturePopupComponent} from './vs-body-temperature-dialog.component';
+import {VsBodyTemperatureDeletePopupComponent} from './vs-body-temperature-delete-dialog.component';
+import {VsBodyTemperatureInfoPopupComponent} from './vs-body-temperature-info.component';
 
 @Injectable()
 export class VsBodyTemperatureResolvePagingParams implements Resolve<any> {
 
-    constructor(private paginationUtil: JhiPaginationUtil) {}
+    constructor(private paginationUtil: JhiPaginationUtil) {
+    }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const page = route.queryParams['page'] ? route.queryParams['page'] : '1';
@@ -20,7 +22,7 @@ export class VsBodyTemperatureResolvePagingParams implements Resolve<any> {
             page: this.paginationUtil.parsePage(page),
             predicate: this.paginationUtil.parsePredicate(sort),
             ascending: this.paginationUtil.parseAscending(sort)
-      };
+        };
     }
 }
 
@@ -71,6 +73,16 @@ export const vsBodyTemperaturePopupRoute: Routes = [
     {
         path: 'vs-body-temperature/:id/delete',
         component: VsBodyTemperatureDeletePopupComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'hcPortalApp.vsBodyTemperature.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
+    },
+    {
+        path: 'vs-body-temperature-info',
+        component: VsBodyTemperatureInfoPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'hcPortalApp.vsBodyTemperature.home.title'

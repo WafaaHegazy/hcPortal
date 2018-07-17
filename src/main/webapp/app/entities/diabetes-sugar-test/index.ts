@@ -6,3 +6,4 @@ export * from './diabetes-sugar-test-delete-dialog.component';
 export * from './diabetes-sugar-test-detail.component';
 export * from './diabetes-sugar-test.component';
 export * from './diabetes-sugar-test.route';
+export * from './diabetes-sugar-test-info.component';

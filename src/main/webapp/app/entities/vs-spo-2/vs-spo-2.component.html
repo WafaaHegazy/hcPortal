@@ -1,9 +1,12 @@
 <div>
     <h2>
         <span jhiTranslate="hcPortalApp.vsSpo2.home.title">Vs Spo 2 S</span>
-        <button class="btn btn-primary float-right jh-create-entity create-vs-spo-2" [routerLink]="['/', { outlets: { popup: ['vs-spo-2-new'] } }]">
+        <button class="btn btn-info" [routerLink]="['/', { outlets: { popup: ['vs-spo-2-info'] } }]"><span
+            class="fa fa-info"></span></button>
+        <button class="btn btn-primary float-right jh-create-entity create-vs-spo-2"
+                [routerLink]="['/', { outlets: { popup: ['vs-spo-2-new'] } }]">
             <span class="fa fa-plus"></span>
-            <span  jhiTranslate="hcPortalApp.vsSpo2.home.createLabel">
+            <span jhiTranslate="hcPortalApp.vsSpo2.home.createLabel">
             Create new Vs Spo 2
             </span>
         </button>
@@ -16,10 +19,14 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="userid"><span jhiTranslate="hcPortalApp.vsSpo2.userid">Userid</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="percent"><span jhiTranslate="hcPortalApp.vsSpo2.percent">Percent</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="measurmentdate"><span jhiTranslate="hcPortalApp.vsSpo2.measurmentdate">Measurmentdate</span> <span class="fa fa-sort"></span></th>
-            <th></th>
+                <th jhiSortBy="userid"><span jhiTranslate="hcPortalApp.vsSpo2.userid">Userid</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="percent"><span jhiTranslate="hcPortalApp.vsSpo2.percent">Percent</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="measurmentdate"><span
+                    jhiTranslate="hcPortalApp.vsSpo2.measurmentdate">Measurmentdate</span> <span
+                    class="fa fa-sort"></span></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -43,10 +50,12 @@
     </div>
     <div *ngIf="vsSpo2S && vsSpo2S.length">
         <div class="row justify-content-center">
-            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5"
+                            [itemsPerPage]="itemsPerPage"></jhi-item-count>
         </div>
         <div class="row justify-content-center">
-            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                            [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
     </div>
 </div>

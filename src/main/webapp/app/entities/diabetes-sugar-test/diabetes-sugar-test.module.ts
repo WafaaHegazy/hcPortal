@@ -1,7 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { HcPortalSharedModule } from '../../shared';
+import {HcPortalSharedModule} from '../../shared';
 import {
     DiabetesSugarTestService,
     DiabetesSugarTestPopupService,
@@ -14,6 +14,8 @@ import {
     diabetesSugarTestRoute,
     diabetesSugarTestPopupRoute,
     DiabetesSugarTestResolvePagingParams,
+    DiabetesSugarTestInfoComponent,
+    DiabetesSugarTestInfoPopupComponent
 } from './';
 
 const ENTITY_STATES = [
@@ -33,6 +35,8 @@ const ENTITY_STATES = [
         DiabetesSugarTestDeleteDialogComponent,
         DiabetesSugarTestPopupComponent,
         DiabetesSugarTestDeletePopupComponent,
+        DiabetesSugarTestInfoComponent,
+        DiabetesSugarTestInfoPopupComponent
     ],
     entryComponents: [
         DiabetesSugarTestComponent,
@@ -40,6 +44,8 @@ const ENTITY_STATES = [
         DiabetesSugarTestPopupComponent,
         DiabetesSugarTestDeleteDialogComponent,
         DiabetesSugarTestDeletePopupComponent,
+        DiabetesSugarTestInfoComponent,
+        DiabetesSugarTestInfoPopupComponent
     ],
     providers: [
         DiabetesSugarTestService,
@@ -48,4 +54,5 @@ const ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class HcPortalDiabetesSugarTestModule {}
+export class HcPortalDiabetesSugarTestModule {
+}

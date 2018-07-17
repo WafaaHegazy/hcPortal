@@ -1,7 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { HcPortalSharedModule } from '../../shared';
+import {HcPortalSharedModule} from '../../shared';
 import {
     VsBodyTemperatureService,
     VsBodyTemperaturePopupService,
@@ -14,6 +14,8 @@ import {
     vsBodyTemperatureRoute,
     vsBodyTemperaturePopupRoute,
     VsBodyTemperatureResolvePagingParams,
+    VsBodyTemperatureInfoComponent,
+    VsBodyTemperatureInfoPopupComponent
 } from './';
 
 const ENTITY_STATES = [
@@ -33,6 +35,8 @@ const ENTITY_STATES = [
         VsBodyTemperatureDeleteDialogComponent,
         VsBodyTemperaturePopupComponent,
         VsBodyTemperatureDeletePopupComponent,
+        VsBodyTemperatureInfoComponent,
+        VsBodyTemperatureInfoPopupComponent
     ],
     entryComponents: [
         VsBodyTemperatureComponent,
@@ -40,6 +44,8 @@ const ENTITY_STATES = [
         VsBodyTemperaturePopupComponent,
         VsBodyTemperatureDeleteDialogComponent,
         VsBodyTemperatureDeletePopupComponent,
+        VsBodyTemperatureInfoComponent,
+        VsBodyTemperatureInfoPopupComponent
     ],
     providers: [
         VsBodyTemperatureService,
@@ -48,4 +54,5 @@ const ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class HcPortalVsBodyTemperatureModule {}
+export class HcPortalVsBodyTemperatureModule {
+}

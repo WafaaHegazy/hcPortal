@@ -1,7 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { HcPortalSharedModule } from '../../shared';
+import {HcPortalSharedModule} from '../../shared';
 import {
     BloodTestService,
     BloodTestPopupService,
@@ -14,6 +14,8 @@ import {
     bloodTestRoute,
     bloodTestPopupRoute,
     BloodTestResolvePagingParams,
+    BloodTestInfoComponent,
+    BloodTestInfoPopupComponent
 } from './';
 
 const ENTITY_STATES = [
@@ -33,6 +35,8 @@ const ENTITY_STATES = [
         BloodTestDeleteDialogComponent,
         BloodTestPopupComponent,
         BloodTestDeletePopupComponent,
+        BloodTestInfoComponent,
+        BloodTestInfoPopupComponent
     ],
     entryComponents: [
         BloodTestComponent,
@@ -40,6 +44,8 @@ const ENTITY_STATES = [
         BloodTestPopupComponent,
         BloodTestDeleteDialogComponent,
         BloodTestDeletePopupComponent,
+        BloodTestInfoComponent,
+        BloodTestInfoPopupComponent
     ],
     providers: [
         BloodTestService,
@@ -48,4 +54,5 @@ const ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class HcPortalBloodTestModule {}
+export class HcPortalBloodTestModule {
+}

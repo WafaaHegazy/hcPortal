@@ -1,0 +1,15 @@
+{
+    "hcPortalApp": {
+        "info": {
+            "heart_rate": "Heart Rate",
+            "blood_pressure": "Blood Pressure",
+            "body_temperature": "Body Temperature",
+            "respiratory_rate": "Respiratory Rate",
+            "spo2": "Blood Oxygen Saturation (SpO2)",
+            "blood_sugar": "Blood Sugar",
+            "dentist_visit": "Dentist Visit",
+            "blood_test": "Blood Test",
+            "menstrual_cycle": "Menstrual Cycle"
+        }
+    }
+}

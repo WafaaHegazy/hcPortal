@@ -6,3 +6,4 @@ export * from './menstrual-cycle-delete-dialog.component';
 export * from './menstrual-cycle-detail.component';
 export * from './menstrual-cycle.component';
 export * from './menstrual-cycle.route';
+export * from './menstrual-cycle-info.component';
