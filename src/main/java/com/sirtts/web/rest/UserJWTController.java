@@ -53,7 +53,7 @@ public class UserJWTController {
         User user = userService.getUserWithAuthoritiesByLogin(loginVM.getUsername()).get();
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(JWTConfigurer.AUTHORIZATION_HEADER, "Bearer " + jwt);
-        return new ResponseEntity<>(new JWTToken(jwt, user.getGender().toString()), httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(new JWTToken(jwt, user.getLogin().toString()), httpHeaders, HttpStatus.OK);
     }
 
     /**
