@@ -95,7 +95,7 @@ public class UserDTO {
         this.ethnicity = user.getEthnicity();
         this.gender = user.getGender();
         this.maritalStatus = user.getMaritalStatus();
-        this.isDoctor = user.isIsDoctor();
+        this.isDoctor = user.getIsDoctor();
         this.patients = user.getPatients().stream()
             .map(User::getLogin)
             .collect(Collectors.toSet());
