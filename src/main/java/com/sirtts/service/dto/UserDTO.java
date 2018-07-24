@@ -232,11 +232,11 @@ public class UserDTO {
         this.maritalStatus = maritalStatus;
     }
 
-    public Boolean getIsDoctor() {
+    public Boolean getDoctor() {
         return isDoctor;
     }
 
-    public void setIsDoctor(Boolean doctor) {
+    public void setDoctor(Boolean doctor) {
         isDoctor = doctor;
     }
 
