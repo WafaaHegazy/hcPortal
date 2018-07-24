@@ -255,7 +255,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.maritalStatus = maritalStatus;
     }
 
-    public Boolean isIsDoctor() {
+    public Boolean getIsDoctor() {
         return isDoctor;
     }
 

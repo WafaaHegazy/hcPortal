@@ -95,7 +95,7 @@ public class UserDTO {
         this.ethnicity = user.getEthnicity();
         this.gender = user.getGender();
         this.maritalStatus = user.getMaritalStatus();
-        this.isDoctor = user.isIsDoctor();
+        this.isDoctor = user.getIsDoctor();
         this.patients = user.getPatients().stream()
             .map(User::getLogin)
             .collect(Collectors.toSet());
@@ -232,11 +232,11 @@ public class UserDTO {
         this.maritalStatus = maritalStatus;
     }
 
-    public Boolean getDoctor() {
+    public Boolean getIsDoctor() {
         return isDoctor;
     }
 
-    public void setDoctor(Boolean doctor) {
+    public void setIsDoctor(Boolean doctor) {
         isDoctor = doctor;
     }
 
