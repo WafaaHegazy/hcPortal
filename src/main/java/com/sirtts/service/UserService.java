@@ -2,6 +2,7 @@ package com.sirtts.service;
 
 import com.sirtts.domain.Authority;
 import com.sirtts.domain.User;
+import com.sirtts.domain.enumeration.Gender;
 import com.sirtts.repository.AuthorityRepository;
 import com.sirtts.config.Constants;
 import com.sirtts.repository.UserRepository;
@@ -92,9 +93,17 @@ public class UserService {
     }
 
     public User registerUser(UserDTO userDTO, String password) {
-
+        System.out.println("**************************************"+userDTO);
         User newUser = new User();
-        Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
+        Authority authority;
+        if(userDTO.getDoctor()==true){
+             authority = authorityRepository.findOne(AuthoritiesConstants.DOCTOR);
+        }
+        if(userDTO.getGender()== Gender.FEMALE){
+             authority = authorityRepository.findOne(AuthoritiesConstants.FEMALE);
+        }else{
+             authority = authorityRepository.findOne(AuthoritiesConstants.USER);
+        }
         Set<Authority> authorities = new HashSet<>();
         String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(userDTO.getLogin());
@@ -117,7 +126,7 @@ public class UserService {
         userRepository.save(newUser);
         cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE).evict(newUser.getLogin());
         cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE).evict(newUser.getEmail());
-        log.debug("Created Information for User: {}", newUser);
+        log.info("Created Information for User: {}", newUser);
         return newUser;
     }
 
