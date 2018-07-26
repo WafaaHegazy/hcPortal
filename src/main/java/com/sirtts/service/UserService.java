@@ -93,18 +93,20 @@ public class UserService {
     }
 
     public User registerUser(UserDTO userDTO, String password) {
-        System.out.println("**************************************"+userDTO);
         User newUser = new User();
         Authority authority;
-        if(userDTO.getDoctor()==true){
-             authority = authorityRepository.findOne(AuthoritiesConstants.DOCTOR);
-        }
-        if(userDTO.getGender()== Gender.FEMALE){
-             authority = authorityRepository.findOne(AuthoritiesConstants.FEMALE);
-        }else{
-             authority = authorityRepository.findOne(AuthoritiesConstants.USER);
-        }
         Set<Authority> authorities = new HashSet<>();
+        authority = authorityRepository.findOne(AuthoritiesConstants.USER);
+        authorities.add(authority);
+        if(userDTO.getDoctor()!=null&&userDTO.getDoctor()==true){
+             authority = authorityRepository.findOne(AuthoritiesConstants.DOCTOR);
+            authorities.add(authority);
+        }
+        if(userDTO.getGender()!=null&&userDTO.getGender()== Gender.FEMALE){
+             authority = authorityRepository.findOne(AuthoritiesConstants.FEMALE);
+            authorities.add(authority);
+        }
+
         String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(userDTO.getLogin());
         // new user gets initially a generated password
@@ -121,8 +123,9 @@ public class UserService {
         newUser.setGender(userDTO.getGender());
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
-        authorities.add(authority);
+
         newUser.setAuthorities(authorities);
+        System.out.println("**************************************"+newUser);
         userRepository.save(newUser);
         cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE).evict(newUser.getLogin());
         cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE).evict(newUser.getEmail());
