@@ -18,6 +18,7 @@ import {HcPortalAccountModule} from './account/account.module';
 import {HcPortalEntityModule} from './entities/entity.module';
 import {PaginationConfig} from './blocks/config/uib-pagination.config';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {ChartsModule} from 'ng2-charts';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import {
     JhiMainComponent,
@@ -39,6 +40,7 @@ import {
         HcPortalAdminModule,
         HcPortalAccountModule,
         HcPortalEntityModule,
+        ChartsModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [

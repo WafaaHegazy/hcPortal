@@ -1,5 +1,6 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {ChartsModule} from 'ng2-charts';
 
 import {HcPortalSharedModule} from '../../shared';
 import {
@@ -26,6 +27,7 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         HcPortalSharedModule,
+        ChartsModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [

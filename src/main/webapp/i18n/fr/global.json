@@ -106,7 +106,8 @@
             "delete": "Supprimer",
             "open": "Ouvrir",
             "save": "Sauvegarder",
-            "view": "Voir"
+            "view": "Voir",
+            "chart": "Show/Hide Chart"
         },
         "detail": {
             "field": "Champs",

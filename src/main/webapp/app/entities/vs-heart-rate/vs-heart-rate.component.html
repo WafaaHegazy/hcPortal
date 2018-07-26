@@ -3,6 +3,12 @@
         <span jhiTranslate="hcPortalApp.vsHeartRate.home.title">Vs Heart Rates</span>
         <button class="btn btn-info" [routerLink]="['/', { outlets: { popup: ['vs-heart-rate-info'] } }]"><span class="fa fa-info"></span>
         </button>
+        <button class="btn btn-success" (click)="hideChart = !hideChart">
+            <span class="fa fa-line-chart"></span>
+            <span jhiTranslate="entity.action.chart">
+            Chart
+            </span>
+        </button>
         <button class="btn btn-primary float-right jh-create-entity create-vs-heart-rate"
                 [routerLink]="['/', { outlets: { popup: ['vs-heart-rate-new'] } }]">
             <span class="fa fa-plus"></span>
@@ -13,6 +19,17 @@
     </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
+    </div>
+    <div class="chart" [hidden]="hideChart">
+        <canvas baseChart *ngIf="lineChartData[0].data.length > 1" width="200" height="50"
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType">
+        </canvas>
+        <h2 *ngIf="lineChartData[0].data.length < 2">Add few measurements to preview the chart</h2>
     </div>
     <br/>
     <div class="table-responsive" *ngIf="vsHeartRates">
