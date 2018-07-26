@@ -2,6 +2,7 @@ package com.sirtts.service;
 
 import com.sirtts.domain.Authority;
 import com.sirtts.domain.User;
+import com.sirtts.domain.enumeration.Gender;
 import com.sirtts.repository.AuthorityRepository;
 import com.sirtts.config.Constants;
 import com.sirtts.repository.UserRepository;
@@ -92,10 +93,20 @@ public class UserService {
     }
 
     public User registerUser(UserDTO userDTO, String password) {
-
         User newUser = new User();
-        Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
+        Authority authority;
         Set<Authority> authorities = new HashSet<>();
+        authority = authorityRepository.findOne(AuthoritiesConstants.USER);
+        authorities.add(authority);
+        if(userDTO.getDoctor()!=null&&userDTO.getDoctor()==true){
+             authority = authorityRepository.findOne(AuthoritiesConstants.DOCTOR);
+            authorities.add(authority);
+        }
+        if(userDTO.getGender()!=null&&userDTO.getGender()== Gender.FEMALE){
+             authority = authorityRepository.findOne(AuthoritiesConstants.FEMALE);
+            authorities.add(authority);
+        }
+
         String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(userDTO.getLogin());
         // new user gets initially a generated password
@@ -112,12 +123,13 @@ public class UserService {
         newUser.setGender(userDTO.getGender());
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
-        authorities.add(authority);
+
         newUser.setAuthorities(authorities);
+        System.out.println("**************************************"+newUser);
         userRepository.save(newUser);
         cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE).evict(newUser.getLogin());
         cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE).evict(newUser.getEmail());
-        log.debug("Created Information for User: {}", newUser);
+        log.info("Created Information for User: {}", newUser);
         return newUser;
     }
 

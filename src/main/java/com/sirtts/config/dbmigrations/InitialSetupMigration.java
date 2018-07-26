@@ -16,14 +16,20 @@ import java.time.Instant;
 @ChangeLog(order = "001")
 public class InitialSetupMigration {
 
-    @ChangeSet(order = "01", author = "initiator", id = "01-addAuthorities")
+    @ChangeSet(order = "01", author = "initiator", id = "01-1-addAuthorities")
     public void addAuthorities(MongoTemplate mongoTemplate) {
         Authority adminAuthority = new Authority();
         adminAuthority.setName(AuthoritiesConstants.ADMIN);
         Authority userAuthority = new Authority();
         userAuthority.setName(AuthoritiesConstants.USER);
+        Authority doctorAuthority = new Authority();
+        doctorAuthority.setName(AuthoritiesConstants.DOCTOR);
+        Authority femaleAuthority = new Authority();
+        femaleAuthority.setName(AuthoritiesConstants.FEMALE);
         mongoTemplate.save(adminAuthority);
         mongoTemplate.save(userAuthority);
+        mongoTemplate.save(doctorAuthority);
+        mongoTemplate.save(femaleAuthority);
     }
 
     @ChangeSet(order = "02", author = "initiator", id = "02-addUsers")

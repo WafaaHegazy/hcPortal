@@ -34,7 +34,7 @@ export const menstrualCycleRoute: Routes = [
             'pagingParams': MenstrualCycleResolvePagingParams
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_FEMALE'],
             pageTitle: 'hcPortalApp.menstrualCycle.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -42,7 +42,7 @@ export const menstrualCycleRoute: Routes = [
         path: 'menstrual-cycle/:id',
         component: MenstrualCycleDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_FEMALE'],
             pageTitle: 'hcPortalApp.menstrualCycle.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -54,7 +54,7 @@ export const menstrualCyclePopupRoute: Routes = [
         path: 'menstrual-cycle-new',
         component: MenstrualCyclePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_FEMALE'],
             pageTitle: 'hcPortalApp.menstrualCycle.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -64,7 +64,7 @@ export const menstrualCyclePopupRoute: Routes = [
         path: 'menstrual-cycle/:id/edit',
         component: MenstrualCyclePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_FEMALE'],
             pageTitle: 'hcPortalApp.menstrualCycle.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -74,7 +74,7 @@ export const menstrualCyclePopupRoute: Routes = [
         path: 'menstrual-cycle/:id/delete',
         component: MenstrualCycleDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_FEMALE'],
             pageTitle: 'hcPortalApp.menstrualCycle.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -84,7 +84,7 @@ export const menstrualCyclePopupRoute: Routes = [
         path: 'menstrual-cycle-info',
         component: MenstrualCycleInfoPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_FEMALE'],
             pageTitle: 'hcPortalApp.menstrualCycle.home.title'
         },
         canActivate: [UserRouteAccessService],
