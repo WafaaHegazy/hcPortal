@@ -104,7 +104,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     private Set<User> patients = new HashSet<>();
 
-    private Set<MyDoctor> doctors = new HashSet<>();
+    private Set<User> doctors = new HashSet<>();
 
     public String getId() {
         return id;
@@ -284,11 +284,11 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.patients = patients;
     }
 
-    public Set<MyDoctor> getDoctors() {
+    public Set<User> getDoctors() {
         return doctors;
     }
 
-    public void setDoctors(Set<MyDoctor> doctors) {
+    public void setDoctors(Set<User> doctors) {
         this.doctors = doctors;
     }
 

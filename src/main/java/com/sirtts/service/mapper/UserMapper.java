@@ -57,7 +57,7 @@ public class UserMapper {
                 user.setPatients(patients);
             }
 
-            Set<MyDoctor> doctors = this.doctorsFromStrings(userDTO.getDoctors());
+            Set<User> doctors = this.doctorsFromStrings(userDTO.getDoctors());
             if (doctors != null) {
                 user.setDoctors(doctors);
             }
@@ -97,12 +97,10 @@ public class UserMapper {
         }).collect(Collectors.toSet());
     }
 
-    public Set<MyDoctor> doctorsFromStrings(Set<String> strings) {
+    public Set<User> doctorsFromStrings(Set<String> strings) {
         return strings.stream().map(string -> {
-            MyDoctor doctor = new MyDoctor();
-            User user = new User();
-            user.setLogin(string);
-            doctor.setDoctor(user);
+            User doctor = new User();
+            doctor.setLogin(string);
             return doctor;
         }).collect(Collectors.toSet());
     }

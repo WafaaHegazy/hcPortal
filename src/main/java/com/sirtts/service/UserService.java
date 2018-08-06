@@ -15,6 +15,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.CacheManager;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -279,5 +281,32 @@ public class UserService {
     public List<String> getAuthorities() {
         return authorityRepository.findAll().stream().map(Authority::getName).collect(Collectors.toList());
     }
+    public Page<User> findDoctors(Pageable pageable, String id) {
+      User user =   userRepository.findOne(id);
+      Set<User> doctorsSet = user.getDoctors();
+      List<User> doctors = new ArrayList<User>();
+      doctors.addAll(doctorsSet);
+        int start = pageable.getOffset();
+        int end = (start + pageable.getPageSize()) > doctors.size() ? doctors.size() : (start + pageable.getPageSize());
+        Page<User> pages = new PageImpl<User>(doctors.subList(start, end), pageable, doctors.size());
+        return pages;
+    }
 
+    public Page<User> findPaitients(Pageable pageable, String id) {
+        User user =   userRepository.findOne(id);
+        Set<User> PaitientsSet = user.getPatients();
+        List<User> Paitients = new ArrayList<User>();
+        Paitients.addAll(PaitientsSet);
+        int start = pageable.getOffset();
+        int end = (start + pageable.getPageSize()) > Paitients.size() ? Paitients.size() : (start + pageable.getPageSize());
+        Page<User> pages = new PageImpl<User>(Paitients.subList(start, end), pageable, Paitients.size());
+        return pages;
+    }
+
+    public void addPaitent (String Mail, String id){
+        User user = userRepository.findOneByEmailIgnoreCase(Mail).get();
+        User doctor =   userRepository.findOne(id);
+        doctor.getPatients().add(user);
+        userRepository.save(doctor);
+    }
 }

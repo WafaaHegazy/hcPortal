@@ -86,4 +86,12 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     }
+
+    isDoctor() {
+        if (this.principal.isDoctor()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
