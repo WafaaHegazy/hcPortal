@@ -187,4 +187,27 @@ public class UserResource {
         userService.deleteUser(login);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "userManagement.deleted", login)).build();
     }
+
+    @GetMapping("/users/doctors")
+    @Timed
+    public ResponseEntity<List<User>> getAllDoctors(Pageable pageable, String id) {
+        final Page<User> page = userService.findDoctors(pageable,id);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/doctors");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/users/addPaitient")
+    @Timed
+    public ResponseEntity<Void> addPaitient(String Mail, String id) {
+         userService.addPaitent(Mail,id);
+        return ResponseEntity.ok().headers(HeaderUtil.createAlert( "request send", Mail)).build();
+    }
+
+    @GetMapping("/users/paitients")
+    @Timed
+    public ResponseEntity<List<User>> getPaitients(Pageable pageable, String id) {
+        final Page<User> page = userService.findPaitients(pageable,id);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/paitients");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 }

@@ -100,7 +100,7 @@ public class UserDTO {
             .map(User::getLogin)
             .collect(Collectors.toSet());
         this.doctors = user.getDoctors().stream()
-            .map(MyDoctor::getDoctorName)
+            .map(User::getLogin)
             .collect(Collectors.toSet());
     }
 

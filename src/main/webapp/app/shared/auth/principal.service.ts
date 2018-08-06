@@ -103,4 +103,7 @@ export class Principal {
     getGender(): string {
         return this.isIdentityResolved() ? this.userIdentity.gender : null;
     }
+    isDoctor(): boolean {
+        return this.userIdentity.doctor;
+    }
 }
