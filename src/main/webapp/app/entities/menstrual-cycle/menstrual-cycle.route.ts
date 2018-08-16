@@ -38,11 +38,33 @@ export const menstrualCycleRoute: Routes = [
             pageTitle: 'hcPortalApp.menstrualCycle.home.title'
         },
         canActivate: [UserRouteAccessService]
-    }, {
+    },
+    {
         path: 'menstrual-cycle/:id',
         component: MenstrualCycleDetailComponent,
         data: {
             authorities: ['ROLE_FEMALE'],
+            pageTitle: 'hcPortalApp.menstrualCycle.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'menstrual-cycle/patient/menstrual-cycle/:id',
+        component: MenstrualCycleDetailComponent,
+        data: {
+            authorities: ['ROLE_DOCTOR'],
+            pageTitle: 'hcPortalApp.menstrualCycle.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'menstrual-cycle/patient/:login',
+        component: MenstrualCycleComponent,
+        resolve: {
+            'pagingParams': MenstrualCycleResolvePagingParams
+        },
+        data: {
+            authorities: ['ROLE_DOCTOR'],
             pageTitle: 'hcPortalApp.menstrualCycle.home.title'
         },
         canActivate: [UserRouteAccessService]

@@ -38,11 +38,33 @@ export const diabetesSugarTestRoute: Routes = [
             pageTitle: 'hcPortalApp.diabetesSugarTest.home.title'
         },
         canActivate: [UserRouteAccessService]
-    }, {
+    },
+    {
         path: 'diabetes-sugar-test/:id',
         component: DiabetesSugarTestDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
+            pageTitle: 'hcPortalApp.diabetesSugarTest.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'diabetes-sugar-test/patient/diabetes-sugar-test/:id',
+        component: DiabetesSugarTestDetailComponent,
+        data: {
+            authorities: ['ROLE_DOCTOR'],
+            pageTitle: 'hcPortalApp.diabetesSugarTest.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'diabetes-sugar-test/patient/:login',
+        component: DiabetesSugarTestComponent,
+        resolve: {
+            'pagingParams': DiabetesSugarTestResolvePagingParams
+        },
+        data: {
+            authorities: ['ROLE_DOCTOR'],
             pageTitle: 'hcPortalApp.diabetesSugarTest.home.title'
         },
         canActivate: [UserRouteAccessService]

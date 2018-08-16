@@ -28,6 +28,7 @@ currentAccount: any;
     predicate: any;
     previousPage: any;
     reverse: any;
+    patient: string;
 
     constructor(
         private menstrualCycleService: MenstrualCycleService,
@@ -45,17 +46,31 @@ currentAccount: any;
             this.reverse = data.pagingParams.ascending;
             this.predicate = data.pagingParams.predicate;
         });
+        this.activatedRoute.params.subscribe((params) => {
+            this.patient = params['login'];
+        });
     }
 
     loadAll() {
-        this.menstrualCycleService.query({
-            userids: this.principal.getLogin(),
-            page: this.page - 1,
-            size: this.itemsPerPage,
-            sort: this.sort()}).subscribe(
+        if (this.patient) {
+            this.menstrualCycleService.query({
+                userids: this.patient,
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                sort: this.sort()}).subscribe(
                 (res: HttpResponse<MenstrualCycle[]>) => this.onSuccess(res.body, res.headers),
                 (res: HttpErrorResponse) => this.onError(res.message)
-        );
+            );
+        } else {
+            this.menstrualCycleService.query({
+                userids: this.principal.getLogin(),
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                sort: this.sort()}).subscribe(
+                (res: HttpResponse<MenstrualCycle[]>) => this.onSuccess(res.body, res.headers),
+                (res: HttpErrorResponse) => this.onError(res.message)
+            );
+        }
     }
     loadPage(page: number) {
         if (page !== this.previousPage) {

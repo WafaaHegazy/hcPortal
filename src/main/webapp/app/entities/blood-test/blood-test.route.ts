@@ -38,11 +38,33 @@ export const bloodTestRoute: Routes = [
             pageTitle: 'hcPortalApp.bloodTest.home.title'
         },
         canActivate: [UserRouteAccessService]
-    }, {
+    },
+    {
         path: 'blood-test/:id',
         component: BloodTestDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
+            pageTitle: 'hcPortalApp.bloodTest.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'blood-test/patient/blood-test/:id',
+        component: BloodTestDetailComponent,
+        data: {
+            authorities: ['ROLE_DOCTOR'],
+            pageTitle: 'hcPortalApp.bloodTest.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'blood-test/patient/:login',
+        component: BloodTestComponent,
+        resolve: {
+            'pagingParams': BloodTestResolvePagingParams
+        },
+        data: {
+            authorities: ['ROLE_DOCTOR'],
             pageTitle: 'hcPortalApp.bloodTest.home.title'
         },
         canActivate: [UserRouteAccessService]

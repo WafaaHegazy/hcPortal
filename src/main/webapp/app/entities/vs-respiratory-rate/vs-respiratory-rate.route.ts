@@ -38,11 +38,33 @@ export const vsRespiratoryRateRoute: Routes = [
             pageTitle: 'hcPortalApp.vsRespiratoryRate.home.title'
         },
         canActivate: [UserRouteAccessService]
-    }, {
+    },
+    {
         path: 'vs-respiratory-rate/:id',
         component: VsRespiratoryRateDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
+            pageTitle: 'hcPortalApp.vsRespiratoryRate.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'vs-respiratory-rate/patient/vs-respiratory-rate/:id',
+        component: VsRespiratoryRateDetailComponent,
+        data: {
+            authorities: ['ROLE_DOCTOR'],
+            pageTitle: 'hcPortalApp.vsRespiratoryRate.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'vs-respiratory-rate/patient/:login',
+        component: VsRespiratoryRateComponent,
+        resolve: {
+            'pagingParams': VsRespiratoryRateResolvePagingParams
+        },
+        data: {
+            authorities: ['ROLE_DOCTOR'],
             pageTitle: 'hcPortalApp.vsRespiratoryRate.home.title'
         },
         canActivate: [UserRouteAccessService]

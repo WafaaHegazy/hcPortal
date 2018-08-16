@@ -1,0 +1,35 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myMenstrualCycleLabel" jhiTranslate="hcPortalApp.drPatients.home.addLabel">Add a new Patient</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="hcPortalApp.drPatients.patientEmail" for="field_patientEmail">Email
+            </label>
+            <div class="d-flex">
+                <input id="field_patientEmail" type="email" class="form-control" name="patientEmail" [(ngModel)]="drPatients.email"
+                       required/>
+
+            </div>
+            <div [hidden]="!(editForm.controls.email?.dirty && editForm.controls.email?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.email?.errors?.required" jhiTranslate="entity.validation.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-send"></span>&nbsp;<span jhiTranslate="hcPortalApp.drPatients.home.inviteButton">Invite</span>
+        </button>
+    </div>
+</form>

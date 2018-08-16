@@ -255,3 +255,40 @@ ui bootstrap tweaks
         color: #ccc;
     }
 }
+
+.detail-modal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    div {
+        border: 2px solid transparent {
+            radius: 5px;
+        }
+        padding: 20px;
+        margin: 20px;
+        width: 200px;
+        height: 100px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #138496;
+        transition: border 0.4s, border-radius 0.4s;
+        p {
+            font-weight: bold;
+            color: #fff;
+            transform: scale(1);
+            transition: transform 0.2s;
+        }
+    }
+    div:hover {
+        cursor: pointer;
+        border: 2px solid #13586a {
+            radius: 5px;
+        }
+
+        p {
+            transform: scale(1.1);
+        }
+    }
+}

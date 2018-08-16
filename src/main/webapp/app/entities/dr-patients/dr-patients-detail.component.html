@@ -1,0 +1,11 @@
+<div class="modal-header">
+    <h4 class="info-modal-title">{{name}}</h4>
+</div>
+<div class="detail-modal">
+    <div *ngFor="let detailItem of detailItems" (click)="navigate(detailItem.link)">
+        <p>{{detailItem.name}}</p>
+    </div>
+</div>
+<div class="modal-footer info-modal-footer">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="clear()">&times;</button>
+</div>

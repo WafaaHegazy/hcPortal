@@ -17,6 +17,7 @@
                 "bloodTest": "Blood Test",
                 "dentistVisit": "Dentist Visit",
                 "dentistNextVisit": "Dentist Next Visit",
+                "patients": "My Patients",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

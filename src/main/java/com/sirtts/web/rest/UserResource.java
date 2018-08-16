@@ -203,11 +203,11 @@ public class UserResource {
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "request send", Mail)).build();
     }
 
-    @GetMapping("/users/paitients")
+    @GetMapping("/users/patients")
     @Timed
-    public ResponseEntity<List<User>> getPaitients(Pageable pageable, String id) {
+    public ResponseEntity<List<User>> getPatients(Pageable pageable, String id) {
         final Page<User> page = userService.findPaitients(pageable,id);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/paitients");
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/patients");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 }

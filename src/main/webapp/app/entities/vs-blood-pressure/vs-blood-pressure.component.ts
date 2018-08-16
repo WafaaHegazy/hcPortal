@@ -28,6 +28,7 @@ export class VsBloodPressureComponent implements OnInit, OnDestroy {
     predicate: any;
     previousPage: any;
     reverse: any;
+    patient: string;
     hideChart: boolean;
     lineChartData: Array<object> = [
         {
@@ -128,19 +129,35 @@ export class VsBloodPressureComponent implements OnInit, OnDestroy {
             this.reverse = data.pagingParams.ascending;
             this.predicate = data.pagingParams.predicate;
         });
+        this.activatedRoute.params.subscribe((params) => {
+            this.patient = params['login'];
+        });
         this.hideChart = true;
     }
 
     loadAll() {
-        this.vsBloodPressureService.query({
-            userids: this.principal.getLogin(),
-            page: this.page - 1,
-            size: this.itemsPerPage,
-            sort: this.sort()
-        }).subscribe(
-            (res: HttpResponse<VsBloodPressure[]>) => this.onSuccess(res.body, res.headers),
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
+        if (this.patient) {
+            this.vsBloodPressureService.query({
+                userids: this.patient,
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                sort: this.sort()
+            }).subscribe(
+                (res: HttpResponse<VsBloodPressure[]>) => this.onSuccess(res.body, res.headers),
+                (res: HttpErrorResponse) => this.onError(res.message)
+            );
+        } else {
+            this.vsBloodPressureService.query({
+                userids: this.principal.getLogin(),
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                sort: this.sort()
+            }).subscribe(
+                (res: HttpResponse<VsBloodPressure[]>) => this.onSuccess(res.body, res.headers),
+                (res: HttpErrorResponse) => this.onError(res.message)
+            );
+        }
+
     }
 
     loadPage(page: number) {

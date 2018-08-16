@@ -38,11 +38,33 @@ export const vsHeartRateRoute: Routes = [
             pageTitle: 'hcPortalApp.vsHeartRate.home.title'
         },
         canActivate: [UserRouteAccessService]
-    }, {
+    },
+    {
         path: 'vs-heart-rate/:id',
         component: VsHeartRateDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
+            pageTitle: 'hcPortalApp.vsHeartRate.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'vs-heart-rate/patient/vs-heart-rate/:id',
+        component: VsHeartRateDetailComponent,
+        data: {
+            authorities: ['ROLE_DOCTOR'],
+            pageTitle: 'hcPortalApp.vsHeartRate.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'vs-heart-rate/patient/:login',
+        component: VsHeartRateComponent,
+        resolve: {
+            'pagingParams': VsHeartRateResolvePagingParams
+        },
+        data: {
+            authorities: ['ROLE_DOCTOR'],
             pageTitle: 'hcPortalApp.vsHeartRate.home.title'
         },
         canActivate: [UserRouteAccessService]

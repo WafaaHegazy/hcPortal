@@ -38,11 +38,33 @@ export const vsSpo2Route: Routes = [
             pageTitle: 'hcPortalApp.vsSpo2.home.title'
         },
         canActivate: [UserRouteAccessService]
-    }, {
+    },
+    {
         path: 'vs-spo-2/:id',
         component: VsSpo2DetailComponent,
         data: {
             authorities: ['ROLE_USER'],
+            pageTitle: 'hcPortalApp.vsSpo2.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'vs-spo-2/patient/vs-spo-2/:id',
+        component: VsSpo2DetailComponent,
+        data: {
+            authorities: ['ROLE_DOCTOR'],
+            pageTitle: 'hcPortalApp.vsSpo2.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'vs-spo-2/patient/:login',
+        component: VsSpo2Component,
+        resolve: {
+            'pagingParams': VsSpo2ResolvePagingParams
+        },
+        data: {
+            authorities: ['ROLE_DOCTOR'],
             pageTitle: 'hcPortalApp.vsSpo2.home.title'
         },
         canActivate: [UserRouteAccessService]

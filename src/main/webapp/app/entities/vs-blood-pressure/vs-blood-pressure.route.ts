@@ -38,11 +38,33 @@ export const vsBloodPressureRoute: Routes = [
             pageTitle: 'hcPortalApp.vsBloodPressure.home.title'
         },
         canActivate: [UserRouteAccessService]
-    }, {
+    },
+    {
         path: 'vs-blood-pressure/:id',
         component: VsBloodPressureDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
+            pageTitle: 'hcPortalApp.vsBloodPressure.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'vs-blood-pressure/patient/vs-blood-pressure/:id',
+        component: VsBloodPressureDetailComponent,
+        data: {
+            authorities: ['ROLE_DOCTOR'],
+            pageTitle: 'hcPortalApp.vsBloodPressure.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'vs-blood-pressure/patient/:login',
+        component: VsBloodPressureComponent,
+        resolve: {
+            'pagingParams': VsBloodPressureResolvePagingParams
+        },
+        data: {
+            authorities: ['ROLE_DOCTOR'],
             pageTitle: 'hcPortalApp.vsBloodPressure.home.title'
         },
         canActivate: [UserRouteAccessService]

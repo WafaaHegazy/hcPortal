@@ -28,6 +28,7 @@ currentAccount: any;
     predicate: any;
     previousPage: any;
     reverse: any;
+    patient: string;
 
     constructor(
         private bloodTestService: BloodTestService,
@@ -45,9 +46,31 @@ currentAccount: any;
             this.reverse = data.pagingParams.ascending;
             this.predicate = data.pagingParams.predicate;
         });
+        this.routeData = this.activatedRoute.params.subscribe((params) => {
+            this.patient = params['login'];
+        });
     }
 
     loadAll() {
+        if (this.patient) {
+            this.bloodTestService.query({
+                userids: this.patient,
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                sort: this.sort()}).subscribe(
+                (res: HttpResponse<BloodTest[]>) => this.onSuccess(res.body, res.headers),
+                (res: HttpErrorResponse) => this.onError(res.message)
+            );
+        } else {
+            this.bloodTestService.query({
+                userids: this.principal.getLogin(),
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                sort: this.sort()}).subscribe(
+                (res: HttpResponse<BloodTest[]>) => this.onSuccess(res.body, res.headers),
+                (res: HttpErrorResponse) => this.onError(res.message)
+            );
+        }
         this.bloodTestService.query({
             userids: this.principal.getLogin(),
             page: this.page - 1,

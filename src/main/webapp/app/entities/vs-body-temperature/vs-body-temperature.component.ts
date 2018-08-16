@@ -28,6 +28,7 @@ export class VsBodyTemperatureComponent implements OnInit, OnDestroy {
     predicate: any;
     previousPage: any;
     reverse: any;
+    patient: string;
     hideChart: boolean;
     lineChartData: Array<object> = [
         {
@@ -92,19 +93,34 @@ export class VsBodyTemperatureComponent implements OnInit, OnDestroy {
             this.reverse = data.pagingParams.ascending;
             this.predicate = data.pagingParams.predicate;
         });
+        this.activatedRoute.params.subscribe((params) => {
+            this.patient = params['login'];
+        });
         this.hideChart = true;
     }
 
     loadAll() {
-        this.vsBodyTemperatureService.query({
-            userids: this.principal.getLogin(),
-            page: this.page - 1,
-            size: this.itemsPerPage,
-            sort: this.sort()
-        }).subscribe(
-            (res: HttpResponse<VsBodyTemperature[]>) => this.onSuccess(res.body, res.headers),
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
+        if (this.patient) {
+            this.vsBodyTemperatureService.query({
+                userids: this.patient,
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                sort: this.sort()
+            }).subscribe(
+                (res: HttpResponse<VsBodyTemperature[]>) => this.onSuccess(res.body, res.headers),
+                (res: HttpErrorResponse) => this.onError(res.message)
+            );
+        } else {
+            this.vsBodyTemperatureService.query({
+                userids: this.principal.getLogin(),
+                page: this.page - 1,
+                size: this.itemsPerPage,
+                sort: this.sort()
+            }).subscribe(
+                (res: HttpResponse<VsBodyTemperature[]>) => this.onSuccess(res.body, res.headers),
+                (res: HttpErrorResponse) => this.onError(res.message)
+            );
+        }
     }
 
     loadPage(page: number) {

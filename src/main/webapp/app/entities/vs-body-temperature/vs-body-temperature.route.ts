@@ -38,11 +38,33 @@ export const vsBodyTemperatureRoute: Routes = [
             pageTitle: 'hcPortalApp.vsBodyTemperature.home.title'
         },
         canActivate: [UserRouteAccessService]
-    }, {
+    },
+    {
         path: 'vs-body-temperature/:id',
         component: VsBodyTemperatureDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
+            pageTitle: 'hcPortalApp.vsBodyTemperature.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'vs-body-temperature/patient/vs-body-temperature/:id',
+        component: VsBodyTemperatureDetailComponent,
+        data: {
+            authorities: ['ROLE_DOCTOR'],
+            pageTitle: 'hcPortalApp.vsBodyTemperature.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'vs-body-temperature/patient/:login',
+        component: VsBodyTemperatureComponent,
+        resolve: {
+            'pagingParams': VsBodyTemperatureResolvePagingParams
+        },
+        data: {
+            authorities: ['ROLE_DOCTOR'],
             pageTitle: 'hcPortalApp.vsBodyTemperature.home.title'
         },
         canActivate: [UserRouteAccessService]
