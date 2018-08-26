@@ -21,7 +21,7 @@
     <div class="row">
     </div>
     <div class="chart" [hidden]="hideChart">
-        <canvas baseChart *ngIf="lineChartData[0].data.length > 1" width="200" height="50"
+        <canvas baseChart *ngIf="lineChartData[0]['data'].length > 1" width="200" height="50"
                 [datasets]="lineChartData"
                 [labels]="lineChartLabels"
                 [options]="lineChartOptions"
@@ -29,7 +29,7 @@
                 [legend]="lineChartLegend"
                 [chartType]="lineChartType">
         </canvas>
-        <h2 *ngIf="lineChartData[0].data.length < 2">Add few measurements to preview the chart</h2>
+        <h2 *ngIf="lineChartData[0]['data'].length < 2">Add few measurements to preview the chart</h2>
     </div>
     <br/>
     <div class="table-responsive" *ngIf="diabetesSugarTests">

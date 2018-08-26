@@ -1,7 +1,7 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {DrPatientsPopupService} from './dr-patients-popup.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { DrPatientsPopupService } from './dr-patients-popup.service';
 
 @Component({
     selector: 'jhi-dr-patients-detail',
@@ -36,10 +36,6 @@ export class DrPatientsDetailComponent implements OnInit {
             }, {
                 name: 'Blood Pressure',
                 link: '../vs-blood-pressure/patient/'
-            },
-            {
-                name: 'Menstrual Cycle',
-                link: '../menstrual-cycle/patient/'
             },
             {
                 name: 'Blood Sugar Tests',
