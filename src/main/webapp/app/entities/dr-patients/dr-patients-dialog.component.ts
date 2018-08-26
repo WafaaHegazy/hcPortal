@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
@@ -9,6 +9,7 @@ import { JhiEventManager } from 'ng-jhipster';
 import { DrPatients } from './dr-patients.model';
 import { DrPatientsPopupService } from './dr-patients-popup.service';
 import { DrPatientsService } from './dr-patients.service';
+import { Principal } from '../../shared';
 
 @Component({
     selector: 'jhi-dr-patients-dialog',
@@ -18,10 +19,12 @@ export class DrPatientsDialogComponent implements OnInit {
 
     drPatients: DrPatients;
     isSaving: boolean;
+    @Input() email: string;
 
     constructor(
         public activeModal: NgbActiveModal,
         private drPatientsService: DrPatientsService,
+        private principal: Principal,
         private eventManager: JhiEventManager
     ) {
     }
@@ -36,13 +39,7 @@ export class DrPatientsDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        if (this.drPatients.id !== undefined) {
-            this.subscribeToSaveResponse(
-                this.drPatientsService.update(this.drPatients));
-        } else {
-            this.subscribeToSaveResponse(
-                this.drPatientsService.create(this.drPatients));
-        }
+        this.subscribeToSaveResponse(this.drPatientsService.add(this.principal.getId(), this.email));
     }
 
     private subscribeToSaveResponse(result: Observable<HttpResponse<DrPatients>>) {
@@ -51,7 +48,7 @@ export class DrPatientsDialogComponent implements OnInit {
     }
 
     private onSaveSuccess(result: DrPatients) {
-        this.eventManager.broadcast({ name: 'DrPatientsListModification', content: 'OK'});
+        this.eventManager.broadcast({ name: 'DrPatientsListModification', content: 'OK' });
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }
@@ -72,11 +69,11 @@ export class DrPatientsPopupComponent implements OnInit, OnDestroy {
     constructor(
         private route: ActivatedRoute,
         private drPatientsPopupService: DrPatientsPopupService
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
-            if ( params['id'] ) {
+            if (params['id']) {
                 this.drPatientsPopupService
                     .open(DrPatientsDialogComponent as Component, params['id']);
             } else {

@@ -13,30 +13,18 @@ export type EntityResponseType = HttpResponse<DrPatients>;
 @Injectable()
 export class DrPatientsService {
 
-    private resourceUrl =  SERVER_API_URL + 'api/users/patients';
+    private resourceUrl =  SERVER_API_URL + 'api/users';
 
     constructor(private http: HttpClient, private dateUtils: JhiDateUtils) { }
 
-    create(drPatients: DrPatients): Observable<EntityResponseType> {
-        const copy = this.convert(drPatients);
-        return this.http.post<DrPatients>(this.resourceUrl, copy, { observe: 'response' })
-            .map((res: EntityResponseType) => this.convertResponse(res));
-    }
-
-    update(drPatients: DrPatients): Observable<EntityResponseType> {
-        const copy = this.convert(drPatients);
-        return this.http.put<DrPatients>(this.resourceUrl, copy, { observe: 'response' })
-            .map((res: EntityResponseType) => this.convertResponse(res));
-    }
-
-    find(id: string): Observable<EntityResponseType> {
-        return this.http.get<DrPatients>(`${this.resourceUrl}/${id}`, { observe: 'response'})
+    add(id: string, email: string): Observable<EntityResponseType> {
+        return this.http.get<DrPatients>(`${this.resourceUrl}/addPatient?Mail=${email}&id=${id}`, { observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
     query(req?: any): Observable<HttpResponse<DrPatients[]>> {
         const options = createRequestOption(req);
-        return this.http.get<DrPatients[]>(`${this.resourceUrl}/`, { params: options, observe: 'response' })
+        return this.http.get<DrPatients[]>(`${this.resourceUrl}/patients`, { params: options, observe: 'response' })
             .map((res: HttpResponse<DrPatients[]>) => this.convertArrayResponse(res));
     }
 

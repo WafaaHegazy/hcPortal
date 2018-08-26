@@ -294,16 +294,16 @@ public class UserService {
         return pages;
     }
 
-    public Page<User> findPaitients(Pageable pageable, String id) {
+    public Page<User> findPatients(Pageable pageable, String id) {
         User user =   userRepository.findOne(id);
-        Set<String> PaitientsSet = user.getPatients();
-        List<User> Paitients = new ArrayList<User>();
-        for(String Paint:PaitientsSet){
-            Paitients.add( userRepository.findOne(Paint));
+        Set<String> PatientsSet = user.getPatients();
+        List<User> Patients = new ArrayList<User>();
+        for(String Paint:PatientsSet){
+            Patients.add( userRepository.findOne(Paint));
         }
         int start = pageable.getOffset();
-        int end = (start + pageable.getPageSize()) > Paitients.size() ? Paitients.size() : (start + pageable.getPageSize());
-        Page<User> pages = new PageImpl<User>(Paitients.subList(start, end), pageable, Paitients.size());
+        int end = (start + pageable.getPageSize()) > Patients.size() ? Patients.size() : (start + pageable.getPageSize());
+        Page<User> pages = new PageImpl<User>(Patients.subList(start, end), pageable, Patients.size());
         return pages;
     }
 
