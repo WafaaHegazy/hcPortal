@@ -97,8 +97,10 @@ public class UserDTO {
         this.maritalStatus = user.getMaritalStatus();
         this.isDoctor = user.getIsDoctor();
         this.patients = user.getPatients().stream()
+            .map(User::getLogin)
             .collect(Collectors.toSet());
         this.doctors = user.getDoctors().stream()
+            .map(User::getLogin)
             .collect(Collectors.toSet());
     }
 

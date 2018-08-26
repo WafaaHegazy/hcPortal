@@ -271,12 +271,10 @@ public class UserService {
     }
     public Page<User> findDoctors(Pageable pageable, String id) {
       User user =   userRepository.findOne(id);
-      Set<String> doctorsSet = user.getDoctors();
+      Set<User> doctorsSet = user.getDoctors();
       List<User> doctors = new ArrayList<User>();
-      for(String doctor: doctorsSet){
-          doctors.add(userRepository.findOne(doctor));
-      }
-      int start = pageable.getOffset();
+      doctors.addAll(doctorsSet);
+        int start = pageable.getOffset();
         int end = (start + pageable.getPageSize()) > doctors.size() ? doctors.size() : (start + pageable.getPageSize());
         Page<User> pages = new PageImpl<User>(doctors.subList(start, end), pageable, doctors.size());
         return pages;
@@ -284,11 +282,9 @@ public class UserService {
 
     public Page<User> findPaitients(Pageable pageable, String id) {
         User user =   userRepository.findOne(id);
-        Set<String> PaitientsSet = user.getPatients();
+        Set<User> PaitientsSet = user.getPatients();
         List<User> Paitients = new ArrayList<User>();
-        for(String Paint:PaitientsSet){
-            Paitients.add( userRepository.findOne(Paint));
-        }
+        Paitients.addAll(PaitientsSet);
         int start = pageable.getOffset();
         int end = (start + pageable.getPageSize()) > Paitients.size() ? Paitients.size() : (start + pageable.getPageSize());
         Page<User> pages = new PageImpl<User>(Paitients.subList(start, end), pageable, Paitients.size());
@@ -296,11 +292,9 @@ public class UserService {
     }
 
     public void addPaitent (String Mail, String id){
-        User patient = userRepository.findOneByEmailIgnoreCase(Mail).get();
+        User user = userRepository.findOneByEmailIgnoreCase(Mail).get();
         User doctor =   userRepository.findOne(id);
-        doctor.getPatients().add(patient.getId());
-        patient.getDoctors().add(doctor.getId());
+        doctor.getPatients().add(user);
         userRepository.save(doctor);
-        userRepository.save(patient);
     }
 }

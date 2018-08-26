@@ -190,7 +190,7 @@ public class UserResource {
 
     @GetMapping("/users/doctors")
     @Timed
-    public ResponseEntity<List<User>> getDoctors(Pageable pageable, String id) {
+    public ResponseEntity<List<User>> getAllDoctors(Pageable pageable, String id) {
         final Page<User> page = userService.findDoctors(pageable,id);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/doctors");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);

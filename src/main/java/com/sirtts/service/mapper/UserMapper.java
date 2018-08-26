@@ -52,12 +52,12 @@ public class UserMapper {
                 user.setAuthorities(authorities);
             }
 
-            Set<String> patients = userDTO.getPatients();
+            Set<User> patients = this.patientsFromStrings(userDTO.getPatients());
             if (patients != null) {
                 user.setPatients(patients);
             }
 
-            Set<String> doctors = userDTO.getDoctors();
+            Set<User> doctors = this.doctorsFromStrings(userDTO.getDoctors());
             if (doctors != null) {
                 user.setDoctors(doctors);
             }
