@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiLanguageService } from 'ng-jhipster';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {JhiLanguageService} from 'ng-jhipster';
 
-import { ProfileService } from '../profiles/profile.service';
-import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from '../../shared';
+import {ProfileService} from '../profiles/profile.service';
+import {JhiLanguageHelper, Principal, LoginModalService, LoginService} from '../../shared';
 
-import { VERSION } from '../../app.constants';
+import {VERSION} from '../../app.constants';
 
 @Component({
     selector: 'jhi-navbar',
@@ -49,7 +49,7 @@ export class NavbarComponent implements OnInit {
     }
 
     changeLanguage(languageKey: string) {
-      this.languageService.changeLanguage(languageKey);
+        this.languageService.changeLanguage(languageKey);
     }
 
     collapseNavbar() {
@@ -80,18 +80,10 @@ export class NavbarComponent implements OnInit {
 
     isFemale() {
         this.gender = this.principal.getGender();
-        if (this.gender === 'FEMALE') {
-            return true;
-        } else {
-            return false;
-        }
+        return this.gender === 'FEMALE';
     }
 
     isDoctor() {
-        if (this.principal.isDoctor()) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.principal.isDoctor();
     }
 }

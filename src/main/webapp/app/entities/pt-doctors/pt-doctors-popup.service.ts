@@ -1,17 +1,18 @@
 import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { DrPatients } from './dr-patients.model';
+import { PtDoctors } from './pt-doctors.model';
 import { DatePipe } from '@angular/common';
 
 @Injectable()
-export class DrPatientsPopupService {
+export class PtDoctorsPopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
         private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
+
     ) {
         this.ngbModalRef = null;
     }
@@ -26,16 +27,16 @@ export class DrPatientsPopupService {
             if (!id) {
                 // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
                 setTimeout(() => {
-                    this.ngbModalRef = this.DrPatientsModalRef(component, new DrPatients());
+                    this.ngbModalRef = this.ptDoctorsModalRef(component, new PtDoctors());
                     resolve(this.ngbModalRef);
                 }, 0);
             }
         });
     }
 
-    DrPatientsModalRef(component: Component, drPatients: DrPatients): NgbModalRef {
+    ptDoctorsModalRef(component: Component, ptDoctors: PtDoctors): NgbModalRef {
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static' });
-        modalRef.componentInstance.DrPatients = drPatients;
+        modalRef.componentInstance.ptDoctors = ptDoctors;
         modalRef.result.then((result) => {
             this.router.navigate([{ outlets: { popup: null } }], { replaceUrl: true, queryParamsHandling: 'merge' });
             this.ngbModalRef = null;

@@ -11,6 +11,7 @@ import { HcPortalBloodTestModule } from './blood-test/blood-test.module';
 import { HcPortalDentistVisitModule } from './dentist-visit/dentist-visit.module';
 import { HcPortalDentistNextVisitModule } from './dentist-next-visit/dentist-next-visit.module';
 import {HcPortalDrPatientsModule} from './dr-patients/dr-patients.module';
+import {HcPortalPtDoctorsModule} from './pt-doctors/pt-doctors.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -25,7 +26,8 @@ import {HcPortalDrPatientsModule} from './dr-patients/dr-patients.module';
         HcPortalBloodTestModule,
         HcPortalDentistVisitModule,
         HcPortalDentistNextVisitModule,
-        HcPortalDrPatientsModule
+        HcPortalDrPatientsModule,
+        HcPortalPtDoctorsModule
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],
