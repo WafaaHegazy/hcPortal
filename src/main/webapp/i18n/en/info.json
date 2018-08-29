@@ -10,7 +10,8 @@
             "dentist_visit": "Dentist Visit",
             "blood_test": "Blood Test",
             "menstrual_cycle": "Menstrual Cycle",
-            "dr_patients": "My Patients"
+            "dr_patients": "My Patients",
+            "pt_doctors": "My Doctors"
         }
     }
 }

@@ -1,0 +1,26 @@
+{
+    "hcPortalApp": {
+        "ptDoctors": {
+            "home": {
+                "title": "My Doctors",
+                "addLabel": "Add a new Doctor",
+                "removeLabel": "Remove this Doctor",
+                "inviteButton": "Invite"
+            },
+            "invited": "A new Doctor has been invited with identifier {{ param }}",
+            "updated": "A new Doctor has been updated with identifier {{ param }}",
+            "deleted": "A new Doctor has been deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to remove this Doctor {{ id }}?"
+            },
+            "detail": {
+                "title": "Doctor"
+            },
+            "userid": "Userid",
+            "doctorName": "Doctor Name",
+            "doctorEmail": "Email",
+            "doctorGender": "Gender",
+            "doctorBirthDate": "BirthDate"
+        }
+    }
+}
